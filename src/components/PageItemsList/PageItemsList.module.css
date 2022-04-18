@@ -1,0 +1,10 @@
+.page-items {
+  grid-column: 4 / 13;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 24px;
+  background: #fff;
+  border: 1px solid #F1F3F4;
+  border-radius: 6px;
+  padding: 24px;
+}

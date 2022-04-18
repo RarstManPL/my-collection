@@ -1,0 +1,30 @@
+.manage {
+  grid-column: 1 / 4;
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #F1F3F4;
+  border-radius: 6px;
+  gap: 10px;
+  flex-direction: column;
+  display: flex;
+}
+
+.add {
+  color: #fff;
+  padding: 12px 24px;
+  background: var(--primary);
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 16px;
+  height: 46px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.separator {
+  display: block;
+  width: 100%;
+  border: 1px solid #CBD5E1;
+}

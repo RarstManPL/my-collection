@@ -1,0 +1,24 @@
+.widget {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  grid-column: -1 / -4;
+}
+
+.user {
+  font-size: 16px;
+  font-weight: 400px;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: all 200ms;
+  border-radius: 6px;
+}
+
+.user:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

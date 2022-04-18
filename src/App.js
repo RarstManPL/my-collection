@@ -1,25 +1,81 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import "./App.css"
 
-function App() {
+import { Header } from './components/Header'
+
+import Home from './pages'
+import Login from './pages/login'
+
+import { Books } from './pages/books'
+import BookCreate from './pages/books/create'
+import BookEdit from './pages/books/edit'
+import BookDetails from './pages/books/details'
+
+import { Games } from './pages/games'
+import GameCreate from './pages/games/create'
+import GameEdit from './pages/games/edit'
+import GameDetails from './pages/games/details'
+
+import { Movies } from './pages/movies'
+import MovieCreate from './pages/movies/create'
+import MovieEdit from './pages/movies/edit'
+import MovieDetails from './pages/movies/details'
+
+import { useLocation } from "react-router-dom"
+
+const colors = {
+  books: {
+    primary: "#FF8A65",
+    secondary: "#B15032"
+  },
+
+  games: {
+    primary: "#7CD051",
+    secondary: "#168467"
+  },
+
+  movies: {
+    primary: "#7C63De",
+    secondary: "#361B9C"
+  }
+}
+
+const App = () => {
+  const location = useLocation()
+  const colorScheme = Object
+    .entries(colors)
+    .find(([key]) => location.pathname.startsWith(`/${ key }`))
+    ?.[1]
+
+  const styles = colorScheme
+    ? { "--primary": colorScheme.primary, "--secondary": colorScheme.secondary }
+    : {}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={ styles }>
+      <Header />
+        
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="/login" element={ <Login /> }/>
+
+        <Route path="/books" element={ <Books /> }/>
+        <Route path="/books/:id" element={ <BookDetails /> }/>
+        <Route path="/books/create" element={ <BookCreate />}/>
+        <Route path="/books/edit/:id" element={ <BookEdit />}/>
+
+        <Route path="/games" element={ <Games /> }/>
+        <Route path="/games/:id" element={ <GameDetails /> }/>
+        <Route path="/games/create" element={ <GameCreate />}/>
+        <Route path="/games/edit/:id" element={ <GameEdit />}/>
+
+        <Route path="/movies" element={ <Movies /> }/>
+        <Route path="/movies/:id" element={ <MovieDetails /> }/>
+        <Route path="/movies/create" element={ <MovieCreate />}/>
+        <Route path="/movies/edit/:id" element={ <MovieEdit />}/>
+      </Routes>
     </div>
   );
 }
 
-export default App;
+export default App

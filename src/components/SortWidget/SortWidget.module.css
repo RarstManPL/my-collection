@@ -1,0 +1,23 @@
+.sort-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  gap: 4px;
+  list-style-type: none;
+}
+
+.sort-item {
+  padding: 12px 24px;
+  border-radius: 6px;
+  transition: all 200ms;
+  cursor: pointer;
+}
+
+.sort-item:hover {
+  background: #F8FAFC;
+}
+
+.sort-item.active {
+  background: #E2E8F0;
+}
