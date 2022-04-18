@@ -5,17 +5,17 @@ import { useLocation, useNavigate } from "react-router-dom"
 const ManageWidget = ({ sortMethods, addButton }) => {
   const navigate = useNavigate()
   const location = useLocation()
-  const buttonAction = () => navigate(`${ location.pathname }/create`)
+  const buttonAction = () => navigate(`${location.pathname}/create`)
 
   return (
-    <aside className={ styles.manage }>
-      <button 
-        className={ styles.add } 
-        onClick={ buttonAction }>{ addButton.text }</button>
+    <aside className={styles.manage}>
+      <button
+        className={styles.add}
+        onClick={buttonAction}>{addButton.text}</button>
 
-      <hr className={ styles.separator } />
+      <hr className={styles.separator} />
 
-      <SortWidget methods={ sortMethods } />
+      <SortWidget methods={sortMethods} />
     </aside>
   )
 }

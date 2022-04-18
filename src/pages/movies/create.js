@@ -3,4 +3,3 @@ export default function MovieCreate() {
     <div>create movie</div>
   )
 }
-  

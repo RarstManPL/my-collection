@@ -8,5 +8,5 @@
 
 .page-name b {
   font-weight: 700;
-  color: var(--secondary)
+  color: rgb(var(--secondary))
 }

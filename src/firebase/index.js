@@ -10,12 +10,12 @@ const firebaseConfig = {
   storageBucket: "mycollection-c3724.appspot.com",
   messagingSenderId: "909923186604",
   appId: "1:909923186604:web:fe7adc006c4cf07605ac09",
-  measurementId: "G-3B6ZX2WJKB"
+  measurementId: "G-3B6ZX2WJKB",
 }
 
 const app = initializeApp(firebaseConfig)
 
-const firestore = initializeFirestore(app, {cacheSizeBytes: CACHE_SIZE_UNLIMITED});
+const firestore = initializeFirestore(app, { cacheSizeBytes: CACHE_SIZE_UNLIMITED });
 enableIndexedDbPersistence(firestore)
 
 const auth = getAuth(app)

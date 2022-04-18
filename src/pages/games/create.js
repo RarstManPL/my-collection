@@ -3,4 +3,3 @@ export default function GameCreate() {
     <div>create game</div>
   )
 }
-  

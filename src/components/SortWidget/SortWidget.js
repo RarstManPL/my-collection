@@ -10,15 +10,15 @@ const SortWidget = ({ methods }) => {
   }
 
   return (
-    <div className={ styles['sort-widget'] }>
-      <ul className={ styles['sort-list'] }>
-        { methods.map((method) => (
-          <li 
-            className={ `${ styles['sort-item'] } ${ activeId === method.id ? styles.active : "" }` }
-            onClick={ () => handleClick(method) }
-            key={ method.id }
-          >{ method.text }</li>
-        )) }
+    <div className={styles['sort-widget']}>
+      <ul className={styles['sort-list']}>
+        {methods.map((method) => (
+          <li
+            className={`${styles['sort-item']} ${activeId === method.id ? styles.active : ""}`}
+            onClick={() => handleClick(method)}
+            key={method.id}
+          >{method.text}</li>
+        ))}
       </ul>
     </div>
   )

@@ -5,23 +5,23 @@ const PageItem = ({ pageItem }) => {
   const navigate = useNavigate()
 
   return (
-    <div 
-      className={ styles['page-item'] }
-      onClick={ () => navigate(`/${ pageItem.collection }/${ pageItem.id }`) }
+    <div
+      className={styles['page-item']}
+      onClick={() => navigate(`/${pageItem.collection}/${pageItem.id}`)}
     >
-      <img 
-        className={ styles['item-image'] } 
-        src={ pageItem.image } 
-        alt={ pageItem.title } 
+      <img
+        className={styles['item-image']}
+        src={pageItem.image}
+        alt={pageItem.title}
       />
 
-      <div className={ styles['item-caption'] }>
+      <div className={styles['item-caption']}>
         <p className="author">
-          { pageItem.author }
+          {pageItem.author}
         </p>
 
-        <p className={ styles.title }>
-          { pageItem.title }
+        <p className={styles.title}>
+          {pageItem.title}
         </p>
       </div>
     </div>

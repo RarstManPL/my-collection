@@ -4,7 +4,6 @@ export default function BookEdit() {
   const { id } = useParams()
 
   return (
-    <div>edit book { id }</div>
+    <div>edit book {id}</div>
   )
 }
-  

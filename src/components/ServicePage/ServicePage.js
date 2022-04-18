@@ -12,8 +12,8 @@ const ServicePage = ({ name, sortMethods, addButton }) => {
   const [options, setOptions] = useState(null)
 
   const sortMethods_ = sortMethods
-    .map(sortMethod => ({ 
-      ...sortMethod, 
+    .map(sortMethod => ({
+      ...sortMethod,
       action: (category_) => setCategory(category_)
     }))
 
@@ -33,16 +33,16 @@ const ServicePage = ({ name, sortMethods, addButton }) => {
   }, [user, userReady, documentReady])
 
   return (
-    <main className={ `container ${ styles.page }` }>
-      <PageTitle name={ name } />
+    <main className={`container ${styles.page}`}>
+      <PageTitle name={name} />
 
       <ManageWidget
-        sortMethods={ sortMethods_ }
-        addButton={ addButton } />
+        sortMethods={sortMethods_}
+        addButton={addButton} />
 
-      <PageItemsList 
-        snapshot={ snapshot }
-        category={ category } />
+      <PageItemsList
+        snapshot={snapshot}
+        category={category} />
     </main>
   )
 }

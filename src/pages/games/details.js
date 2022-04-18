@@ -4,7 +4,6 @@ export default function GameDetails() {
   const { id } = useParams()
 
   return (
-    <div>game details { id }</div>
+    <div>game details {id}</div>
   )
 }
-  

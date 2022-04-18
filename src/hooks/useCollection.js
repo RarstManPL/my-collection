@@ -5,7 +5,7 @@ import { useEffect, useReducer, useState } from "react"
 const collectionInitialState = {
   response: null,
   error: null,
-  ready: false
+  ready: false,
 }
 
 const collectionReducer = (state, action) => {
@@ -14,10 +14,10 @@ const collectionReducer = (state, action) => {
       return collectionInitialState
 
     case "DOCUMENT_ADDED":
-      return {...state, response: action.payload, ready: true}
+      return { ...state, response: action.payload, ready: true, }
 
     case "RAISE_ERROR":
-      return {...state, error: action.payload, ready: true}
+      return { ...state, error: action.payload, ready: true, }
 
     default:
       return state
@@ -42,9 +42,9 @@ const useCollection = (firestoreCollection) => {
   }
 
   const addDocument = async (data, id = null) => {
-    dispatchNotCancelled({type: "TO_INITIAL_STATE"})
+    dispatchNotCancelled({ type: "TO_INITIAL_STATE" })
 
-    const docData = {...data, createdAt: serverTimestamp()}
+    const docData = { ...data, createdAt: serverTimestamp(), }
 
     try {
       const reference = id
@@ -55,16 +55,16 @@ const useCollection = (firestoreCollection) => {
         ? addDoc(reference, docData)
         : setDoc(reference, docData)
 
-      dispatchNotCancelled({type: "DOCUMENT_ADDED", payload: ref})
-    } 
+      dispatchNotCancelled({ type: "DOCUMENT_ADDED", payload: ref, })
+    }
     catch (error) {
-      dispatchNotCancelled({type: "RAISE_ERROR", payload: error.message})
+      dispatchNotCancelled({ type: "RAISE_ERROR", payload: error.message, })
     }
   }
-  
-  const deleteDocument = async (data) => {}
 
-  const getDocument = async (id) => {}
+  const deleteDocument = async (data) => { }
+
+  const getDocument = async (id) => { }
 
   return { addDocument, deleteDocument, getDocument, state: response }
 }

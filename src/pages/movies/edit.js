@@ -4,6 +4,6 @@ export default function MovieEdit() {
   const { id } = useParams()
 
   return (
-    <div>edit movie { id }</div>
+    <div>edit movie {id}</div>
   )
 }

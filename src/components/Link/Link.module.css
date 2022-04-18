@@ -11,6 +11,7 @@
   text-decoration: none;
 }
 
-.link:hover, .link.active {
+.link:hover,
+.link.active {
   background: rgba(255, 255, 255, 0.1);
 }

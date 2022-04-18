@@ -12,7 +12,7 @@
 .add {
   color: #fff;
   padding: 12px 24px;
-  background: var(--primary);
+  background: rgb(var(--primary));
   border: none;
   border-radius: 6px;
   width: 100%;

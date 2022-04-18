@@ -25,26 +25,26 @@ import { useLocation } from "react-router-dom"
 
 const colors = {
   books: {
-    primary: "#FF8A65",
-    secondary: "#B15032"
+    primary: "255, 138, 101",
+    secondary: "177, 80, 50",
   },
 
   games: {
-    primary: "#7CD051",
-    secondary: "#168467"
+    primary: "124, 208, 81",
+    secondary: "22, 132, 103",
   },
 
   movies: {
-    primary: "#7C63De",
-    secondary: "#361B9C"
-  }
+    primary: "124, 99, 222",
+    secondary: "54, 27, 156",
+  },
 }
 
 const App = () => {
   const location = useLocation()
   const colorScheme = Object
     .entries(colors)
-    .find(([key]) => location.pathname.startsWith(`/${ key }`))
+    .find(([key]) => location.pathname.startsWith(`/${key}`))
     ?.[1]
 
   const styles = colorScheme
@@ -52,27 +52,27 @@ const App = () => {
     : {}
 
   return (
-    <div className="App" style={ styles }>
+    <div className="App" style={styles}>
       <Header />
-        
+
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/login" element={ <Login /> }/>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
 
-        <Route path="/books" element={ <Books /> }/>
-        <Route path="/books/:id" element={ <BookDetails /> }/>
-        <Route path="/books/create" element={ <BookCreate />}/>
-        <Route path="/books/edit/:id" element={ <BookEdit />}/>
+        <Route path="/books" element={<Books />} />
+        <Route path="/books/:id" element={<BookDetails />} />
+        <Route path="/books/create" element={<BookCreate />} />
+        <Route path="/books/edit/:id" element={<BookEdit />} />
 
-        <Route path="/games" element={ <Games /> }/>
-        <Route path="/games/:id" element={ <GameDetails /> }/>
-        <Route path="/games/create" element={ <GameCreate />}/>
-        <Route path="/games/edit/:id" element={ <GameEdit />}/>
+        <Route path="/games" element={<Games />} />
+        <Route path="/games/:id" element={<GameDetails />} />
+        <Route path="/games/create" element={<GameCreate />} />
+        <Route path="/games/edit/:id" element={<GameEdit />} />
 
-        <Route path="/movies" element={ <Movies /> }/>
-        <Route path="/movies/:id" element={ <MovieDetails /> }/>
-        <Route path="/movies/create" element={ <MovieCreate />}/>
-        <Route path="/movies/edit/:id" element={ <MovieEdit />}/>
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/:id" element={<MovieDetails />} />
+        <Route path="/movies/create" element={<MovieCreate />} />
+        <Route path="/movies/edit/:id" element={<MovieEdit />} />
       </Routes>
     </div>
   );

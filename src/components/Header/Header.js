@@ -7,11 +7,11 @@ export const Header = () => {
   const navigate = useNavigate()
 
   return (
-    <header className={ styles.header }>
+    <header className={styles.header}>
       <div className="container">
-        <div 
-          className={ styles.logo }
-          onClick={ () => navigate("/") }
+        <div
+          className={styles.logo}
+          onClick={() => navigate("/")}
         >
           <b>MY</b>COLLECTION
         </div>

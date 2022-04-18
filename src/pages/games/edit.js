@@ -4,7 +4,6 @@ export default function GameEdit() {
   const { id } = useParams()
 
   return (
-    <div>edit game { id }</div>
+    <div>edit game {id}</div>
   )
 }
-  

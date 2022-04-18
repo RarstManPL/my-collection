@@ -12,22 +12,22 @@ const UserWidget = () => {
   const navigate = useNavigate()
 
   return (
-    <div className={ styles.widget }>
-      { userReady && documentReady
+    <div className={styles.widget}>
+      {userReady && documentReady
         ? user
           ? (
             <>
-              <Link 
-                tag="button" 
-                className={ styles.user } 
-                onClick={() => signOut(auth)}>{ user.name }</Link>
+              <Link
+                tag="button"
+                className={styles.user}
+                onClick={() => signOut(auth)}>{user.name}</Link>
 
-              <Avatar src={ user.avatarURL } />
+              <Avatar src={user.avatarURL} />
             </>)
           : <Link
-              tag="button"
-              className={ styles.user }
-              onClick={() => navigate("/login")}>Zaloguj się</Link>
+            tag="button"
+            className={styles.user}
+            onClick={() => navigate("/login")}>Zaloguj się</Link>
         : <Bars color="#fff" height={40} width={80} />
       }
     </div>
