@@ -1,17 +1,19 @@
-import styles from "./ManageWidget.module.css"
 import { SortWidget } from "../SortWidget/SortWidget"
-import { useLocation, useNavigate } from "react-router-dom"
+import { useLocation } from "react-router-dom"
+import { Link } from "../Link"
 
-const ManageWidget = ({ sortMethods, addButton }) => {
-  const navigate = useNavigate()
+import styles from "./ManageWidget.module.css"
+
+const ManageWidget = (props) => {
+  const { sortMethods, addButton } = props
   const location = useLocation()
-  const buttonAction = () => navigate(`${location.pathname}/create`)
 
   return (
     <aside className={styles.manage}>
-      <button
-        className={styles.add}
-        onClick={buttonAction}>{addButton.text}</button>
+      <Link
+        tag="link"
+        to={`${location.pathname}/create`}
+        className={styles.add}>{addButton.text}</Link>
 
       <hr className={styles.separator} />
 

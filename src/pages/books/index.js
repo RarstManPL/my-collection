@@ -1,22 +1,20 @@
 import { ServicePage } from "../../components/ServicePage"
 
+const addButton = { text: "Dodaj nową książkę" }
+
 const sortMethods = [
   { id: "all", text: "Wszystkie", default: true, value: null },
-  { id: "current", text: "Bieżące" },
-  { id: "pending", text: "W kolejce" },
-  { id: "ended", text: "Przeczytane" },
+  { id: "current", text: "Bieżące", default: false, value: "current" },
+  { id: "pending", text: "W kolejce", default: false, value: "pending" },
+  { id: "ended", text: "Przeczytane", default: false, value: "ended" },
 ]
-
-const addButton = {
-  text: "Dodaj nową książkę",
-}
 
 const Books = () => {
   return (
     <ServicePage
       name="books"
-      sortMethods={sortMethods}
-      addButton={addButton} />
+      addButton={addButton}
+      sortMethods={sortMethods} />
   )
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react"
 import { firestore } from "../firebase"
-import { collection, doc, onSnapshot, query, where } from "firebase/firestore"
+import { collection, doc, onSnapshot, query } from "firebase/firestore"
 
 const snapshotInitialState = {
   documents: null,
@@ -21,16 +21,16 @@ const snapshotReducer = (state, action) => {
       return snapshotInitialState
 
     case "UPDATE_DOCUMENTS":
-      return { ...state, documents: action.payload, ready: true, }
+      return { ...state, documents: action.payload, ready: true }
 
     case "NOT_PASS_CHECK":
       return {
         ...state, ready: true,
-        controls: { ...state.controls, optionsCheck: { ...action.payload, }, },
+        controls: { ...state.controls, optionsCheck: { ...action.payload } }
       }
 
     case "RAISE_ERROR":
-      return { ...state, error: action.payload, ready: true, }
+      return { ...state, error: action.payload, ready: true }
 
     default:
       return state
@@ -41,7 +41,6 @@ const useSnapshot = (firestoreCollection, options = {}) => {
   const [state, dispatch] = useReducer(snapshotReducer, snapshotInitialState)
 
   useEffect(() => {
-    console.log(options)
     dispatch({ type: "TO_INITIAL_STATE" })
 
     const documentIdStop = options
@@ -51,7 +50,7 @@ const useSnapshot = (firestoreCollection, options = {}) => {
 
     const queriesStop = options
       ? "queries" in options
-      && options.queries.filter(q => q.value === null && q.required).length > 0
+      && options.queries.filter(q => q.dc === null || q.dc === undefined).length > 0
       : true
 
     if (!options || documentIdStop || queriesStop) {
@@ -59,8 +58,8 @@ const useSnapshot = (firestoreCollection, options = {}) => {
         type: "NOT_PASS_CHECK", payload: {
           null: !options,
           documentId: documentIdStop,
-          queries: queriesStop,
-        },
+          queries: queriesStop
+        }
       })
       return () => { }
     }
@@ -70,20 +69,18 @@ const useSnapshot = (firestoreCollection, options = {}) => {
       : collection(firestore, firestoreCollection)
 
     const queries = options.queries
-      ? query(reference, ...options.queries
-        .filter(q => q.value !== null)
-        .map(q => where(q.field, q.operator, q.value)))
+      ? query(reference, ...options.queries)
       : reference
 
     const unsubscribe = onSnapshot(queries, { includeMetadataChanges: true }, (snapshot) => {
       dispatch({
         type: 'UPDATE_DOCUMENTS',
         payload: options.documentId
-          ? { ...snapshot.data(), collection: firestoreCollection, }
-          : (snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id, collection: firestoreCollection, })))
+          ? { ...snapshot.data(), collection: firestoreCollection }
+          : (snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id, collection: firestoreCollection })))
       })
     },
-      error => dispatch({ type: 'RAISE_ERROR', payload: error.message, }))
+      error => dispatch({ type: 'RAISE_ERROR', payload: error.message }))
 
     return unsubscribe
   }, [firestoreCollection, options])

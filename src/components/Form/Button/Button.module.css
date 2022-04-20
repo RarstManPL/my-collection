@@ -1,0 +1,17 @@
+.form-button {
+  background: rgb(var(--primary));
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.form-button:disabled {
+  background: #E2E8F0;
+}

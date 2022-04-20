@@ -4,18 +4,3 @@
   align-items: center;
   gap: 12px;
 }
-
-.item {
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 400;
-  font-size: 16px;
-  transition: all 200ms;
-}
-
-.item:hover,
-.item.active {
-  background: rgba(255, 255, 255, 0.1);
-}

@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react"
 import { useAuth } from "../../hooks/useAuth"
-import { useSnapshot } from "../../hooks/useSnapshot"
 import { ManageWidget } from "../ManageWidget"
-import { PageItemsList } from "../PageItemsList"
-import { PageTitle } from "../PageTitle"
+import { ServiceItemsList } from "../ServiceItemsList"
+import { Title } from "../Title"
+import { where } from "firebase/firestore"
+
 import styles from "./ServicePage.module.css"
 
-const ServicePage = ({ name, sortMethods, addButton }) => {
+const ServicePage = (props) => {
+  const { name, sortMethods, addButton } = props
   const { user, userReady, documentReady } = useAuth()
   const [category, setCategory] = useState(sortMethods.find(sortMethod => sortMethod.default)?.value)
   const [options, setOptions] = useState(null)
+  const uid = user ? user.uid : null
 
   const sortMethods_ = sortMethods
     .map(sortMethod => ({
@@ -17,32 +20,35 @@ const ServicePage = ({ name, sortMethods, addButton }) => {
       action: (category_) => setCategory(category_)
     }))
 
-  const snapshot = useSnapshot(name, options)
-
   useEffect(() => {
     if (userReady && documentReady) {
       setOptions({
-        queries: [{
-          field: "uid",
-          operator: "==",
-          value: user ? user.uid : null,
-          required: true
-        }]
+        queries: [
+          where("uid", "==", uid)
+        ]
       })
     }
-  }, [user, userReady, documentReady])
+  }, [uid, userReady, documentReady])
 
   return (
     <main className={`container ${styles.page}`}>
-      <PageTitle name={name} />
+      <Title
+        start="my"
+        end={name} />
 
-      <ManageWidget
-        sortMethods={sortMethods_}
-        addButton={addButton} />
+      {user
+        ? (<>
+          <ManageWidget
+            sortMethods={sortMethods_}
+            addButton={addButton} />
 
-      <PageItemsList
-        snapshot={snapshot}
-        category={category} />
+          <ServiceItemsList
+            name={name}
+            queryOptions={options}
+            category={category} />
+        </>)
+        : <div>Nie możesz tego zobaczyć... Nie jesteś zalogowany</div>
+      }
     </main>
   )
 }

@@ -1,25 +1,25 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 import "./App.css"
 
-import { Header } from './components/Header'
+import { Header } from "./components/Header"
 
-import Home from './pages'
-import Login from './pages/login'
+import { Home } from "./pages"
+import { Login } from "./pages/login"
 
-import { Books } from './pages/books'
-import BookCreate from './pages/books/create'
-import BookEdit from './pages/books/edit'
-import BookDetails from './pages/books/details'
+import { Books } from "./pages/books"
+import BookCreate from "./pages/books/create"
+import BookEdit from "./pages/books/edit"
+import BookDetails from "./pages/books/details"
 
-import { Games } from './pages/games'
-import GameCreate from './pages/games/create'
-import GameEdit from './pages/games/edit'
-import GameDetails from './pages/games/details'
+import { Games } from "./pages/games"
+import GameCreate from "./pages/games/create"
+import GameEdit from "./pages/games/edit"
+import GameDetails from "./pages/games/details"
 
-import { Movies } from './pages/movies'
-import MovieCreate from './pages/movies/create'
-import MovieEdit from './pages/movies/edit'
-import MovieDetails from './pages/movies/details'
+import { Movies } from "./pages/movies"
+import MovieCreate from "./pages/movies/create"
+import MovieEdit from "./pages/movies/edit"
+import MovieDetails from "./pages/movies/details"
 
 import { useLocation } from "react-router-dom"
 
@@ -42,6 +42,7 @@ const colors = {
 
 const App = () => {
   const location = useLocation()
+
   const colorScheme = Object
     .entries(colors)
     .find(([key]) => location.pathname.startsWith(`/${key}`))
@@ -78,4 +79,4 @@ const App = () => {
   );
 }
 
-export default App
+export { App }

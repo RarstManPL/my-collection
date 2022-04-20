@@ -1,4 +1,4 @@
-.page-items {
+.service-items {
   grid-column: 4 / 13;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -7,4 +7,5 @@
   border: 1px solid #F1F3F4;
   border-radius: 6px;
   padding: 24px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1);
 }

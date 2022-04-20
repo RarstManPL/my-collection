@@ -1,0 +1,13 @@
+.title {
+  font-weight: 200;
+  grid-column: 1 / 4;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #000;
+  font-size: 32px;
+}
+
+.title-start {
+  font-weight: 700;
+  color: rgb(var(--secondary));
+}
