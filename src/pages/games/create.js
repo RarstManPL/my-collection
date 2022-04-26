@@ -1,5 +1,18 @@
-export default function GameCreate() {
+import { GameFields } from "../../components/Pages"
+import { ServiceEditor } from "../../components/Service"
+import { pages } from "../../constatns"
+
+const GameCreate = () => {
   return (
-    <div>create game</div>
+    <ServiceEditor
+      collection="games"
+      categories={pages.games.sortMethods}
+      addButton={pages.games.addButton}
+      formInit={pages.games.formInit}
+    >
+      <GameFields />
+    </ServiceEditor>
   )
 }
+
+export { GameCreate }

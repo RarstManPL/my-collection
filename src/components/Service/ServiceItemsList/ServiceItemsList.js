@@ -1,6 +1,6 @@
 import { ServiceItem } from "../ServiceItem/ServiceItem"
 import { Bars } from "react-loader-spinner"
-import { useSnapshot } from "../../hooks/useSnapshot"
+import { useSnapshot } from "../../../hooks/useSnapshot"
 import { useEffect, useState } from "react"
 
 import styles from "./ServiceItemsList.module.css"

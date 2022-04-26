@@ -1,0 +1,23 @@
+.form-columns {
+  display: grid;
+  position: relative;
+}
+
+.form-column {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+
+.form-column:nth-child(2n+1):not(:last-child) {
+  padding-right: 24px;
+}
+
+.form-column:nth-child(2n) {
+  padding-left: 24px;
+}
+
+.form-column:not(:last-child) {
+  border-right: 1px solid #CBD5E1;
+}

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
-import { useAuth } from "../../hooks/useAuth"
-import { ManageWidget } from "../ManageWidget"
+import { useAuth } from "../../../hooks/useAuth"
+import { ManageWidget } from "../../ManageWidget"
 import { ServiceItemsList } from "../ServiceItemsList"
-import { Title } from "../Title"
+import { Title } from "../../Title"
 import { where } from "firebase/firestore"
 
 import styles from "./ServicePage.module.css"

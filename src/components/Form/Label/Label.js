@@ -1,4 +1,4 @@
-import styles from "./Label.module.css"
+import styles from "../Form.module.css"
 
 const Label = (props) => {
   const { children, required, ...props_ } = props

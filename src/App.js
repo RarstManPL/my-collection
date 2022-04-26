@@ -7,17 +7,17 @@ import { Home } from "./pages"
 import { Login } from "./pages/login"
 
 import { Books } from "./pages/books"
-import BookCreate from "./pages/books/create"
+import { BookCreate } from "./pages/books/create"
 import BookEdit from "./pages/books/edit"
 import BookDetails from "./pages/books/details"
 
 import { Games } from "./pages/games"
-import GameCreate from "./pages/games/create"
+import { GameCreate } from "./pages/games/create"
 import GameEdit from "./pages/games/edit"
 import GameDetails from "./pages/games/details"
 
 import { Movies } from "./pages/movies"
-import MovieCreate from "./pages/movies/create"
+import { MovieCreate } from "./pages/movies/create"
 import MovieEdit from "./pages/movies/edit"
 import MovieDetails from "./pages/movies/details"
 

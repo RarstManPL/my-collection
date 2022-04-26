@@ -1,10 +1,11 @@
 import styles from "./Button.module.css"
 
 const Button = (props) => {
-  const { children, ...props_ } = props
+  const { children, className, ...props_ } = props
+  const classes = `${styles["form-button"]}${className ? ` ${className}` : ""}`
 
   return (
-    <button className={styles['form-button']} {...props_}>
+    <button className={classes} {...props_}>
       {children}
     </button>
   )
