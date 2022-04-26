@@ -7,7 +7,7 @@ const links = [
   { id: "movies", name: "Filmy", url: "/movies" },
 ]
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       {links.map(link => (
@@ -20,5 +20,3 @@ const Navbar = () => {
     </nav>
   )
 }
-
-export { Navbar }

@@ -1,13 +1,11 @@
 import styles from "./Error.module.css"
 
-const Error = (props) => {
-  const { children, ...props_} = props
+export const Error = (props) => {
+  const { children, ...rest } = props
 
   return (
-    <div className={styles["field-error"]} {...props_}>
+    <div className={styles["field-error"]} {...rest}>
       {children}
     </div>
   )
 }
-
-export { Error }

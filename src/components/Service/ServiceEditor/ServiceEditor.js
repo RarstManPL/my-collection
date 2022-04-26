@@ -1,27 +1,27 @@
 import { Form, Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import { Title } from "../../Title"
-import { Button, InlineChooser, Input } from "../../Form"
+import { Button, InlineChooser } from "../../Form"
 import { useCollection } from "../../../hooks/useCollection"
 import { ServiceFormPreview } from "../"
-
-import styles from "./ServiceEditor.module.css"
 import { useAuth } from "../../../hooks/useAuth"
 
-const ServiceEditor = (props) => {
+import styles from "./ServiceEditor.module.css"
+
+export const ServiceEditor = (props) => {
   const { collection, addButton, categories, formInit, id, children } = props
-  const { addDocument, response } = useCollection(collection)
+  const { addDocument } = useCollection(collection)
   const navigate = useNavigate()
   const { user } = useAuth()
 
-  const _categories = categories.filter((category) => category.value)
-  const formInit_ = {
+  const filteredCategories = categories.filter((category) => category.value)
+  const preparedFormInit = {
     ...formInit,
     initialValues: {
       ...formInit.initialValues,
       category: formInit.initialValues.category && formInit.initialValues.category !== ""
         ? formInit.initialValues.category
-        : _categories[0].value,
+        : filteredCategories[0].value,
     },
   }
 
@@ -38,7 +38,7 @@ const ServiceEditor = (props) => {
         end={collection}
         motd={addButton.text} />
 
-      <Formik {...formInit_} onSubmit={handleSubmit}>
+      <Formik {...preparedFormInit} onSubmit={handleSubmit}>
         <>
           <div className={styles["form-preview"]}>
             <ServiceFormPreview />
@@ -50,7 +50,7 @@ const ServiceEditor = (props) => {
 
               <hr className={styles["form-line"]} />
 
-              <InlineChooser name="category" options={_categories} />
+              <InlineChooser name="category" options={filteredCategories} />
             </div>
 
             <div className={styles["form-buttons"]}>
@@ -62,5 +62,3 @@ const ServiceEditor = (props) => {
     </div>
   )
 }
-
-export { ServiceEditor }

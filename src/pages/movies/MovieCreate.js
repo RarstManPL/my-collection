@@ -1,18 +1,16 @@
 import { MovieFields } from "../../components/Pages"
 import { ServiceEditor } from "../../components/Service"
-import { pages } from "../../constatns"
+import { movieConstants } from "../../constatns"
 
-const MovieCreate = () => {
+export const MovieCreate = () => {
   return (
     <ServiceEditor
       collection="movies"
-      categories={pages.movies.sortMethods}
-      addButton={pages.movies.addButton}
-      formInit={pages.movies.formInit}
+      categories={movieConstants.sortMethods}
+      addButton={movieConstants.addButton}
+      formInit={movieConstants.formInit}
     >
       <MovieFields />
     </ServiceEditor>
   )
 }
-
-export { MovieCreate }

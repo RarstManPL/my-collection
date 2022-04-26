@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import styles from "./ServiceItem.module.css"
 
-const ServiceItem = (props) => {
+export const ServiceItem = (props) => {
   const { serviceItem } = props
   const navigate = useNavigate()
 
@@ -30,5 +30,3 @@ const ServiceItem = (props) => {
     </div>
   )
 }
-
-export { ServiceItem } 

@@ -1,6 +1,6 @@
 import { Input } from "../../Form"
 
-const BookFields = () => {
+export const BookFields = () => {
   return (
     <>
       <Input
@@ -29,5 +29,3 @@ const BookFields = () => {
     </>
   )
 }
-
-export { BookFields }

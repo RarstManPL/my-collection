@@ -1,7 +1,7 @@
-import { pages } from "../../../constatns"
+import { gameConstants } from "../../../constatns"
 import { FormColumn, FormColumns, Input, Select } from "../../Form"
 
-const GameFields = () => {
+export const GameFields = () => {
   return (
     <>
       <FormColumns amount={2}>
@@ -41,7 +41,7 @@ const GameFields = () => {
           />
 
           <Select
-            options={pages.games.platforms}
+            options={gameConstants.platforms}
             label="Platforma"
             name="platform" />
         </FormColumn>
@@ -49,5 +49,3 @@ const GameFields = () => {
     </>
   )
 }
-
-export { GameFields }

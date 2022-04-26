@@ -7,17 +7,17 @@ import { where } from "firebase/firestore"
 
 import styles from "./ServicePage.module.css"
 
-const ServicePage = (props) => {
+export const ServicePage = (props) => {
   const { name, sortMethods, addButton } = props
   const { user, userReady, documentReady } = useAuth()
   const [category, setCategory] = useState(sortMethods.find(sortMethod => sortMethod.default)?.value)
   const [options, setOptions] = useState(null)
   const uid = user ? user.uid : null
 
-  const sortMethods_ = sortMethods
+  const mappedSortMethods = sortMethods
     .map(sortMethod => ({
       ...sortMethod,
-      action: (category_) => setCategory(category_)
+      action: (cat) => setCategory(cat)
     }))
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const ServicePage = (props) => {
       {user
         ? (<>
           <ManageWidget
-            sortMethods={sortMethods_}
+            sortMethods={mappedSortMethods}
             addButton={addButton} />
 
           <ServiceItemsList
@@ -52,5 +52,3 @@ const ServicePage = (props) => {
     </main>
   )
 }
-
-export { ServicePage }

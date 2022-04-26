@@ -2,19 +2,19 @@ import { NavLink, Link as RLink } from "react-router-dom"
 
 import styles from "./Link.module.css"
 
-const Link = (props) => {
-  const { tag, to = "/", children, className, isActive, activeClass, ...props_ } = props
+export const Link = (props) => {
+  const { tag, to = "/", children, className, isActive, activeClass, ...rest } = props
 
-  const activeClass_ = activeClass ? activeClass : styles.active
+  const selectedActiveClass = activeClass ? activeClass : styles.active
   const classNames =
-    `${styles.link}${className ? ` ${className}` : ""}${isActive ? ` ${activeClass_}` : ""}`
+    `${styles.link}${className ? ` ${className}` : ""}${isActive ? ` ${selectedActiveClass}` : ""}`
 
   switch (tag) {
     case "button":
       return (
         <button
           className={classNames}
-          {...props_}
+          {...rest}
         >{children}</button>
       )
 
@@ -23,7 +23,7 @@ const Link = (props) => {
         <RLink
           to={to}
           className={classNames}
-          {...props_}
+          {...rest}
         >{children}</RLink>
       )
 
@@ -31,8 +31,8 @@ const Link = (props) => {
       return (
         <NavLink
           to={to}
-          className={({ isActive }) => `${classNames} ${isActive ? activeClass_ : ""}`}
-          {...props_}
+          className={({ isActive }) => `${classNames} ${isActive ? selectedActiveClass : ""}`}
+          {...rest}
         >{children}</NavLink>
       )
 
@@ -41,10 +41,8 @@ const Link = (props) => {
         <a
           className={classNames}
           href={to}
-          {...props_}
+          {...rest}
         >{children}</a>
       )
   }
 }
-
-export { Link }

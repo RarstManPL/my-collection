@@ -1,7 +1,7 @@
 import styles from "./Avatar.module.css"
 import defaultAvatar from "../../assets/default.jpg"
 
-const Avatar = (props) => {
+export const Avatar = (props) => {
   const { src = defaultAvatar } = props
 
   return (
@@ -12,5 +12,3 @@ const Avatar = (props) => {
     />
   )
 }
-
-export { Avatar }

@@ -1,20 +1,19 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { useCollection } from '../../hooks/useCollection'
-import { pages } from '../../constatns'
-import { Input } from '../../components/Form'
-import { ServiceEditor } from '../../components/Service'
-import { BookFields } from '../../components/Pages'
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { useCollection } from "../../hooks/useCollection"
+import { ServiceEditor } from "../../components/Service"
+import { BookFields } from "../../components/Pages"
+import { bookConstants } from "../../constatns"
 
-export default function BookEdit() {
+export const BookEdit = () => {
   const { id } = useParams()
   const { getDocument, response } = useCollection("books")
   const [ready, setReady] = useState(false)
-  const [formInit, setFormInit] = useState(pages.books.formInit)
+  const [formInit, setFormInit] = useState(bookConstants.formInit)
 
-  useEffect(() => { 
+  useEffect(() => {
     getDocument(id)
-  }, [id])
+  }, [id, getDocument])
 
   useEffect(() => {
     if (response.ready) {
@@ -30,7 +29,7 @@ export default function BookEdit() {
           },
         }
       ))
-     
+
       setReady(true)
     }
   }, [response])
@@ -39,8 +38,8 @@ export default function BookEdit() {
     ready && (
       <ServiceEditor
         collection="books"
-        categories={pages.books.sortMethods}
-        addButton={pages.books.addButton}
+        categories={bookConstants.sortMethods}
+        addButton={bookConstants.addButton}
         formInit={formInit}
         id={id}
       >

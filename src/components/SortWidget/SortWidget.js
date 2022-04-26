@@ -3,7 +3,7 @@ import { Link } from "../Link"
 
 import styles from "./SortWidget.module.css"
 
-const SortWidget = (props) => {
+export const SortWidget = (props) => {
   const { methods } = props
   const [activeId, setActiveId] = useState(methods.find(method => method.default)?.id)
 
@@ -29,5 +29,3 @@ const SortWidget = (props) => {
     </div>
   )
 }
-
-export { SortWidget }

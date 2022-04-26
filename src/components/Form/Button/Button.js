@@ -1,14 +1,12 @@
 import styles from "./Button.module.css"
 
-const Button = (props) => {
-  const { children, className, ...props_ } = props
+export const Button = (props) => {
+  const { children, className, ...rest } = props
   const classes = `${styles["form-button"]}${className ? ` ${className}` : ""}`
 
   return (
-    <button className={classes} {...props_}>
+    <button className={classes} {...rest}>
       {children}
     </button>
   )
 }
-
-export { Button }

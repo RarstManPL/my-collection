@@ -5,7 +5,7 @@ import { useSnapshot } from "../hooks/useSnapshot"
 import { getDownloadURL, ref } from "firebase/storage"
 import { useNavigate } from "react-router-dom"
 
-const AuthContext = createContext()
+export const AuthContext = createContext()
 
 const authInitialState = {
   user: null,
@@ -36,7 +36,7 @@ const authReducer = (state, action) => {
   }
 }
 
-const AuthContextProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, authInitialState)
   const [options, setOptions] = useState(null)
   const navigate = useNavigate()
@@ -51,6 +51,21 @@ const AuthContextProvider = ({ children }) => {
 
     setOptions(user ? { documentId: { id: user.uid } } : null)
   }
+
+  useEffect(() => {
+    if (userDocument.documents) {
+      const avatarReference = ref(storage, `profilePictures/${userDocument.documents.profilePicture}`)
+      const action = { type: "INJECT_USER_DOCUMENT", payload: { ...userDocument.documents } }
+
+      getDownloadURL(avatarReference)
+        .then((url) => dispatch({ ...action, payload: { ...action.payload, avatarURL: url } }))
+        .catch(() => dispatch(action))
+    }
+  }, [userDocument])
+
+  useEffect(() => {
+    (onAuthStateChanged(auth, (user) => injectUser(user)))()
+  }, [])
 
   const login = async (email, password) => {
     const answear = {
@@ -76,26 +91,9 @@ const AuthContextProvider = ({ children }) => {
     navigate("/")
   }
 
-  useEffect(() => {
-    if (userDocument.documents) {
-      const avatarReference = ref(storage, `profilePictures/${userDocument.documents.profilePicture}`)
-      const action = { type: "INJECT_USER_DOCUMENT", payload: { ...userDocument.documents } }
-
-      getDownloadURL(avatarReference)
-        .then((url) => dispatch({ ...action, payload: { ...action.payload, avatarURL: url } }))
-        .catch(() => dispatch(action))
-    }
-  }, [userDocument])
-
-  useEffect(() => {
-    (onAuthStateChanged(auth, (user) => injectUser(user)))()
-  }, [])
-
   return (
     <AuthContext.Provider value={{ ...state, dispatch, login, logout }}>
       {children}
     </AuthContext.Provider>
   )
 }
-
-export { AuthContext, AuthContextProvider }

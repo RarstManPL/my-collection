@@ -1,18 +1,16 @@
 import { GameFields } from "../../components/Pages"
 import { ServiceEditor } from "../../components/Service"
-import { pages } from "../../constatns"
+import { gameConstants } from "../../constatns"
 
-const GameCreate = () => {
+export const GameCreate = () => {
   return (
     <ServiceEditor
       collection="games"
-      categories={pages.games.sortMethods}
-      addButton={pages.games.addButton}
-      formInit={pages.games.formInit}
+      categories={gameConstants.sortMethods}
+      addButton={gameConstants.addButton}
+      formInit={gameConstants.formInit}
     >
       <GameFields />
     </ServiceEditor>
   )
 }
-
-export { GameCreate }

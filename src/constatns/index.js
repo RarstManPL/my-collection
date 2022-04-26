@@ -1,2 +1,2 @@
 export { regularExpressions } from "./regex"
-export { pages } from "./pages"
+export { bookConstants, gameConstants, movieConstants } from "./pages"

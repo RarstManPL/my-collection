@@ -13,7 +13,7 @@ const titleStyles = {
   lineHeight: "38px",
 }
 
-const Header = () => {
+export const Header = () => {
   const navigate = useNavigate()
 
   return (
@@ -32,5 +32,3 @@ const Header = () => {
     </header>
   )
 }
-
-export { Header }

@@ -4,7 +4,7 @@ import { Link } from "../Link"
 
 import styles from "./ManageWidget.module.css"
 
-const ManageWidget = (props) => {
+export const ManageWidget = (props) => {
   const { sortMethods, addButton } = props
   const location = useLocation()
 
@@ -21,5 +21,3 @@ const ManageWidget = (props) => {
     </aside>
   )
 }
-
-export { ManageWidget }

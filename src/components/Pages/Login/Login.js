@@ -7,7 +7,7 @@ import { Button, Input } from "../../Form"
 
 import styles from "./Login.module.css"
 
-const Login = (props) => {
+export const Login = (props) => {
   const { formInit } = props
   const { user, userReady, login } = useAuth()
   const navigate = useNavigate()
@@ -60,5 +60,3 @@ const Login = (props) => {
     </div>
   )
 }
-
-export { Login }

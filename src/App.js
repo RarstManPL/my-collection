@@ -1,27 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import "./App.css"
-
 import { Header } from "./components/Header"
-
-import { Home } from "./pages"
-import { Login } from "./pages/login"
-
-import { Books } from "./pages/books"
-import { BookCreate } from "./pages/books/create"
-import BookEdit from "./pages/books/edit"
-import BookDetails from "./pages/books/details"
-
-import { Games } from "./pages/games"
-import { GameCreate } from "./pages/games/create"
-import GameEdit from "./pages/games/edit"
-import GameDetails from "./pages/games/details"
-
-import { Movies } from "./pages/movies"
-import { MovieCreate } from "./pages/movies/create"
-import MovieEdit from "./pages/movies/edit"
-import MovieDetails from "./pages/movies/details"
-
 import { useLocation } from "react-router-dom"
+
+import { Home, Login } from "./pages"
+import { BookCreate, BookDetails, BookEdit, BooksList } from "./pages"
+import { GameCreate, GameDetails, GameEdit, GamesList } from "./pages"
+import { MovieCreate, MovieDetails, MovieEdit, MoviesList } from "./pages"
+
+import "./App.css"
 
 const colors = {
   books: {
@@ -40,7 +26,7 @@ const colors = {
   },
 }
 
-const App = () => {
+export const App = () => {
   const location = useLocation()
 
   const colorScheme = Object
@@ -60,23 +46,21 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
 
-        <Route path="/books" element={<Books />} />
+        <Route path="/books" element={<BooksList />} />
         <Route path="/books/:id" element={<BookDetails />} />
         <Route path="/books/create" element={<BookCreate />} />
         <Route path="/books/edit/:id" element={<BookEdit />} />
 
-        <Route path="/games" element={<Games />} />
+        <Route path="/games" element={<GamesList />} />
         <Route path="/games/:id" element={<GameDetails />} />
         <Route path="/games/create" element={<GameCreate />} />
         <Route path="/games/edit/:id" element={<GameEdit />} />
 
-        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies" element={<MoviesList />} />
         <Route path="/movies/:id" element={<MovieDetails />} />
         <Route path="/movies/create" element={<MovieCreate />} />
         <Route path="/movies/edit/:id" element={<MovieEdit />} />
       </Routes>
     </div>
-  );
+  )
 }
-
-export { App }

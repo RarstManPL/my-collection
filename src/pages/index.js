@@ -1,7 +1,5 @@
-const Home = () => {
-  return (
-    <div>index</div>
-  )
-}
-
-export { Home }
+export { Home } from "./Home"
+export { Login } from "./Login"
+export { BookCreate, BookDetails, BookEdit, BooksList } from "./Books"
+export { GameCreate, GameDetails, GameEdit, GamesList } from "./Games"
+export { MovieCreate, MovieDetails, MovieEdit, MoviesList } from "./Movies"

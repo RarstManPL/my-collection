@@ -27,13 +27,13 @@ const collectionReducer = (state, action) => {
   }
 }
 
-const useCollection = (firestoreCollection) => {
-  const [collection_, setCollection_] = useState(null)
+export const useCollection = (firestoreCollection) => {
+  const [preparedCollection, setPreparedCollection] = useState(null)
   const [isCancelled, setCancelled] = useState(false)
   const [state, dispatch] = useReducer(collectionReducer, collectionInitialState)
 
   useEffect(() => {
-    setCollection_(collection(firestore, firestoreCollection))
+    setPreparedCollection(collection(firestore, firestoreCollection))
   }, [firestoreCollection])
 
   useEffect(() => (() => setCancelled(true)), [])
@@ -46,14 +46,12 @@ const useCollection = (firestoreCollection) => {
 
   const addDocument = async (data, id = null) => {
     dispatchNotCancelled({ type: "TO_INITIAL_STATE" })
-    console.log("ID",id)
 
     const docData = { ...data, createdAt: serverTimestamp() }
-    console.log("DEJTa", data)
 
     try {
       const reference = !id
-        ? collection_
+        ? preparedCollection
         : doc(firestore, firestoreCollection, id)
 
       const ref = await !id
@@ -64,7 +62,6 @@ const useCollection = (firestoreCollection) => {
     }
     catch (error) {
       dispatchNotCancelled({ type: "RAISE_ERROR", payload: error.message })
-      console.log("ERR", error.message)
     }
   }
 
@@ -74,11 +71,11 @@ const useCollection = (firestoreCollection) => {
     dispatchNotCancelled({ type: "TO_INITIAL_STATE" })
 
     try {
-      console.log(firestoreCollection)
       const docRef = doc(firestore, firestoreCollection, id)
       const ref = await getDoc(docRef)
+
       dispatchNotCancelled({ type: "DOCUMENT_GOT", payload: ref.data() })
-    } 
+    }
     catch (error) {
       dispatchNotCancelled({ type: "RAISE_ERROR", payload: error.message })
     }
@@ -86,5 +83,3 @@ const useCollection = (firestoreCollection) => {
 
   return { addDocument, deleteDocument, getDocument, response: state }
 }
-
-export { useCollection }

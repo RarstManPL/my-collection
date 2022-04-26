@@ -37,7 +37,7 @@ const snapshotReducer = (state, action) => {
   }
 }
 
-const useSnapshot = (firestoreCollection, options = {}) => {
+export const useSnapshot = (firestoreCollection, options = {}) => {
   const [state, dispatch] = useReducer(snapshotReducer, snapshotInitialState)
 
   useEffect(() => {
@@ -87,5 +87,3 @@ const useSnapshot = (firestoreCollection, options = {}) => {
 
   return state
 }
-
-export { useSnapshot }

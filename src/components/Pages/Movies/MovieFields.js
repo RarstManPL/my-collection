@@ -1,6 +1,6 @@
 import { Input } from "../../Form"
 
-const MovieFields = () => {
+export const MovieFields = () => {
   return (
     <>
       <Input
@@ -29,5 +29,3 @@ const MovieFields = () => {
     </>
   )
 }
-
-export { MovieFields }

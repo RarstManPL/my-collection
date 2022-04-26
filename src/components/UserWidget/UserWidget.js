@@ -5,7 +5,7 @@ import { Bars } from "react-loader-spinner"
 
 import styles from "./UserWidget.module.css"
 
-const UserWidget = () => {
+export const UserWidget = () => {
   const { user, userReady, documentReady, logout } = useAuth()
 
   return (
@@ -23,5 +23,3 @@ const UserWidget = () => {
     </div>
   )
 }
-
-export { UserWidget }

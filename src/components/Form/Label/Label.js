@@ -1,14 +1,12 @@
 import styles from "../Form.module.css"
 
-const Label = (props) => {
-  const { children, required, ...props_ } = props
+export const Label = (props) => {
+  const { children, required, ...rest } = props
   const classes = `${styles["field-label"]}${required ? ` ${styles["field-required"]}` : ""}`
 
   return (
-    <label className={classes} {...props_}>
+    <label className={classes} {...rest}>
       {children}
     </label>
   )
 }
-
-export { Label }

@@ -1,11 +1,11 @@
 import { useField } from "formik";
 import { ServiceItem } from "../ServiceItem"
 
-const ServiceFormPreview = () => {
+export const ServiceFormPreview = () => {
   const [title] = useField("title")
   const [madeMarker] = useField("year")
   const [cover] = useField("cover")
-  
+
   return (
     <ServiceItem serviceItem={{
       title: title.value,
@@ -14,5 +14,3 @@ const ServiceFormPreview = () => {
     }} />
   )
 }
-
-export { ServiceFormPreview }

@@ -1,12 +1,12 @@
-import { RadioGroup } from '@headlessui/react'
-import { useField } from 'formik'
+import { RadioGroup } from "@headlessui/react"
+import { useField } from "formik"
 import { Error } from "../"
 
 import styles from "./InlineChooser.module.css"
 import formStyles from "../Form.module.css"
 
-const InlineChooser = (props) => {
-  const { options, name,  ...props_ } = props
+export const InlineChooser = (props) => {
+  const { options, name } = props
   const [field, meta] = useField(name)
 
   const handleChange = (value) => field.onChange({ target: { value, name } })
@@ -29,5 +29,3 @@ const InlineChooser = (props) => {
     </div>
   )
 }
-
-export { InlineChooser }
