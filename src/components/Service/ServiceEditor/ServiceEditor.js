@@ -32,7 +32,7 @@ export const ServiceEditor = (props) => {
   }
 
   return (
-    <div className="container">
+    <div className="container page">
       <Title
         start="my"
         end={collection}
@@ -54,7 +54,9 @@ export const ServiceEditor = (props) => {
             </div>
 
             <div className={styles["form-buttons"]}>
-              <Button type="submit" className={styles.add}>{addButton.text}</Button>
+              <Button type="submit" className={styles.add}>
+                {addButton.text}
+              </Button>
             </div>
           </Form>
         </>

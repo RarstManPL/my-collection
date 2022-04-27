@@ -1,3 +1,6 @@
+import { regularExpressions } from "../"
+import * as Yup from "yup"
+
 export const gameConstants = {
   addButton: { text: "Dodaj nową grę" },
 
@@ -21,5 +24,14 @@ export const gameConstants = {
       username: "",
       platform: "GOG Galaxy",
     },
+
+    validationSchema: Yup.object({
+      title: Yup.string()
+        .required("Tytuł jest wymagany"),
+      author: Yup.string()
+        .required("Autor jest wymagany"),
+      cover: Yup.string()
+        .matches(regularExpressions.url, "Podany tekst to nie URL")
+    }),
   },
 }

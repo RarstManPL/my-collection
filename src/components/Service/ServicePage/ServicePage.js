@@ -5,8 +5,6 @@ import { ServiceItemsList } from "../ServiceItemsList"
 import { Title } from "../../Title"
 import { where } from "firebase/firestore"
 
-import styles from "./ServicePage.module.css"
-
 export const ServicePage = (props) => {
   const { name, sortMethods, addButton } = props
   const { user, userReady, documentReady } = useAuth()
@@ -31,7 +29,7 @@ export const ServicePage = (props) => {
   }, [uid, userReady, documentReady])
 
   return (
-    <main className={`container ${styles.page}`}>
+    <main className="container page">
       <Title
         start="my"
         end={name} />

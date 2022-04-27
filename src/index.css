@@ -66,3 +66,8 @@ body,
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 24px;
 }
+
+.page {
+  padding: 64px 0;
+  align-items: flex-start;
+}
