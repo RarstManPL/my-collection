@@ -13,6 +13,7 @@ export const bookConstants = {
 
   formInit: {
     initialValues: {
+      isbn: "",
       title: "",
       author: "",
       cover: "",
@@ -24,7 +25,9 @@ export const bookConstants = {
       author: Yup.string()
         .required("Autor jest wymagany"),
       cover: Yup.string()
-        .matches(regularExpressions.url, "Podany tekst to nie URL")
+        .matches(regularExpressions.url, "Podany tekst to nie URL"),
+      isbn: Yup.string()
+        .matches(regularExpressions.isbn, "Podany tekst to nie ISBN"),
     }),
   },
 }

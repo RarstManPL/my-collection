@@ -13,7 +13,7 @@ export const ServiceItem = (props) => {
       <div className={styles["image-container"]}>
         <img
           className={styles["item-image"]}
-          src={serviceItem.src}
+          src={serviceItem.cover}
           alt={serviceItem.title}
         />
       </div>
