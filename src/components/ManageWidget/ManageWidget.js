@@ -3,9 +3,10 @@ import { useLocation } from "react-router-dom"
 import { Link } from "../Link"
 
 import styles from "./ManageWidget.module.css"
+import { SearchWidget } from "../SearchWidget"
 
 export const ManageWidget = (props) => {
-  const { sortMethods, addButton } = props
+  const { sortMethods, addButton, setQuery } = props
   const location = useLocation()
 
   return (
@@ -18,6 +19,7 @@ export const ManageWidget = (props) => {
       <hr className={styles.separator} />
 
       <SortWidget methods={sortMethods} />
+      <SearchWidget setQuery={setQuery} />
     </aside>
   )
 }

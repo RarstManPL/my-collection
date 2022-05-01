@@ -1,26 +1,25 @@
 import { useField, useFormikContext } from "formik"
-import { useEffect } from "react"
-import { useResource } from "../../../hooks/useResource"
+import { useCallback } from "react"
 import { Input } from "../../Form"
 import { regularExpressions } from "../../../constatns"
+import { useServiceFiller } from "../../../hooks/useServiceFiller"
 
 export const BookFields = () => {
   const { setFieldValue } = useFormikContext();
   const [field] = useField("isbn")
 
-  const { resource } = useResource(
-    `https://openlibrary.org/api/books?bibkeys=ISBN:${field.value}&jscmd=data&format=json`,
-    regularExpressions.isbn.test(field.value))
-
-  useEffect(() => {
-    if (!resource || Object.keys(resource).length === 0)
-      return () => { }
-
+  const fillForm = useCallback((resource) => {
     const book = resource[Object.keys(resource)[0]]
     setFieldValue("title", book.title)
     setFieldValue("author", book.authors[0].name)
     setFieldValue("cover", book.cover.large)
-  }, [resource, field.value, setFieldValue])
+  }, [setFieldValue])
+
+  useServiceFiller(
+    `https://openlibrary.org/api/books?bibkeys=ISBN:${field.value}&jscmd=data&format=json`,
+    regularExpressions.isbn.test(field.value),
+    fillForm
+  )
 
   return (
     <>

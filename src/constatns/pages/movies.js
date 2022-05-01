@@ -15,6 +15,7 @@ export const movieConstants = {
       title: "",
       year: "",
       cover: "",
+      movieid: "",
     },
 
     validationSchema: Yup.object({
@@ -26,7 +27,9 @@ export const movieConstants = {
         .max(new Date().getFullYear(), "Nie wybiegaj w przyszłość")
         .required("Rok produkcji jest wymagany"),
       cover: Yup.string()
-        .matches(regularExpressions.url, "Podany tekst to nie URL")
+        .matches(regularExpressions.url, "Podany tekst to nie URL"),
+      movieid: Yup.number()
+        .typeError("Podana wartość musi być liczbą"),
     }),
   },
 }

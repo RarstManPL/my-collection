@@ -2,26 +2,55 @@ import { ServiceItem } from "../ServiceItem/ServiceItem"
 import { Bars } from "react-loader-spinner"
 import { useSnapshot } from "../../../hooks/useSnapshot"
 import { useEffect, useState } from "react"
+import ReactPaginate from "react-paginate"
 
 import styles from "./ServiceItemsList.module.css"
 
+const matchesText = (obj, query) => {
+  if (typeof obj === "string")
+    return obj.toLowerCase().includes(query.toLowerCase())
+
+  return Object.values(obj).some(val => matchesText(val, query))
+}
+
 export const ServiceItemsList = (props) => {
-  const { name, queryOptions = {}, category } = props
+  const { name, queryOptions = {}, category, query, itemsPerPage = 0 } = props
   const [ready, setReady] = useState(false)
   const [documents, setDocuments] = useState(null)
 
+  const [documentsLength, setDocumentsLength] = useState(0)
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+
   const snapshot = useSnapshot(name, queryOptions)
+
+  const handlePageClick = (event) => setItemOffset((event.selected * itemsPerPage) % documentsLength)
 
   useEffect(() => {
     if (snapshot) {
       setReady((snapshot.ready
         && !(snapshot.controls.optionsCheck.null && snapshot.controls.optionsCheck.queries)))
 
-      setDocuments(snapshot.documents && (category
-        ? snapshot.documents.filter(document => document.category === category)
-        : snapshot.documents))
+      if (snapshot.documents) {
+        const categoryFiltred = snapshot.documents && (category
+          ? snapshot.documents.filter(document => document.category === category)
+          : snapshot.documents)
+
+        const queryFiltred = categoryFiltred && (query
+          ? categoryFiltred.filter(document => matchesText(document, query))
+          : categoryFiltred)
+
+        setDocumentsLength(queryFiltred.length)
+
+        if (itemsPerPage > 0) {
+          setDocuments(queryFiltred.slice(itemOffset, itemOffset + itemsPerPage))
+          setPageCount(Math.ceil(queryFiltred.length / itemsPerPage))
+        } else {
+          setDocuments(queryFiltred)
+        }
+      }
     }
-  }, [snapshot, category])
+  }, [snapshot, category, query, itemOffset, itemsPerPage])
 
   return (
     <div className={styles["service-items"]}>
@@ -29,7 +58,23 @@ export const ServiceItemsList = (props) => {
       {ready
         ? !documents || documents.length < 1
           ? <div>Brak elementów do załadowania...</div>
-          : documents.map(item => <ServiceItem serviceItem={item} key={item.id} />)
+          : (
+            <>
+              {documents.map(item => <ServiceItem serviceItem={item} key={item.id} />)}
+
+              {itemsPerPage > 0 && (
+                <ReactPaginate
+                  breakLabel="..."
+                  nextLabel=">"
+                  onPageChange={handlePageClick}
+                  pageRangeDisplayed={5}
+                  pageCount={pageCount}
+                  previousLabel="<"
+                  renderOnZeroPageCount={null}
+                />
+              )}
+            </>
+          )
         : <Bars color="#00BFFF" height={80} width={80} />
       }
     </div>
