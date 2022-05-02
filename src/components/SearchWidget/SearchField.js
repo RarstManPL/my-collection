@@ -1,6 +1,7 @@
-import { useField } from "formik"
 import { useEffect, useState } from "react"
-import { Input } from "../Form"
+import { useField } from "formik"
+
+import { Input } from "../"
 
 export const SearchField = (props) => {
   const { setQuery } = props

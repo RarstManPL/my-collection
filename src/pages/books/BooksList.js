@@ -1,4 +1,4 @@
-import { ServicePage } from "../../components/Service"
+import { ServicePage } from "../../components"
 import { bookConstants } from "../../constatns"
 
 export const BooksList = () => {

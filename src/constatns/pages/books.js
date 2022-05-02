@@ -1,5 +1,5 @@
-import { regularExpressions } from "../"
 import * as Yup from "yup"
+import { regularExpressions } from "../"
 
 export const bookConstants = {
   addButton: { text: "Dodaj nową książkę" },

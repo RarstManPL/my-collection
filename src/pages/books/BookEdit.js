@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import { ServiceItemEdit } from "../../components/Service"
-import { BookFields } from "../../components/Pages"
+
+import { ServiceItemEdit, BookFields } from "../../components"
 import { bookConstants } from "../../constatns"
 
 export const BookEdit = () => {

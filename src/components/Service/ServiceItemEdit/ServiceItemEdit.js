@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
-import { useCollection } from "../../../hooks/useCollection"
+
 import { ServiceEditor } from "../"
+import { useCollection } from "../../../hooks"
 
 const editButton = { text: "Edytuj" }
 

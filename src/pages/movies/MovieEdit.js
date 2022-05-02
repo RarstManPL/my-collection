@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
-import { ServiceItemEdit } from "../../components/Service"
-import { MovieFields } from "../../components/Pages"
+
+import { ServiceItemEdit, MovieFields } from "../../components"
 import { movieConstants } from "../../constatns"
 
 export const MovieEdit = () => {

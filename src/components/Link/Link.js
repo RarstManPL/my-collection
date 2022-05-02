@@ -1,5 +1,4 @@
 import { NavLink, Link as RLink } from "react-router-dom"
-
 import styles from "./Link.module.css"
 
 export const Link = (props) => {

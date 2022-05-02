@@ -1,10 +1,8 @@
-import { Form, Formik } from "formik"
 import { useNavigate } from "react-router-dom"
-import { Title } from "../../Title"
-import { Button, InlineChooser } from "../../Form"
-import { useCollection } from "../../../hooks/useCollection"
-import { ServiceFormPreview } from "../"
-import { useAuth } from "../../../hooks/useAuth"
+import { Form, Formik } from "formik"
+
+import { Title, Button, InlineChooser, ServiceFormPreview } from "../../"
+import { useCollection, useAuth } from "../../../hooks"
 
 import styles from "./ServiceEditor.module.css"
 

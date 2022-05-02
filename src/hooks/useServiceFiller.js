@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useResource } from "./useResource"
+import { useResource } from "./"
 
 export const useServiceFiller = (url, condition, success) => {
   const { resource } = useResource(url, condition)

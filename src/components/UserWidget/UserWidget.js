@@ -1,7 +1,7 @@
-import { useAuth } from "../../hooks/useAuth"
-import { Link } from "../Link"
-import { Avatar } from "../Avatar"
 import { Bars } from "react-loader-spinner"
+
+import { Avatar, Link } from "../"
+import { useAuth } from "../../hooks"
 
 import styles from "./UserWidget.module.css"
 

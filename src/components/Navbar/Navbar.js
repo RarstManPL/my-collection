@@ -1,4 +1,4 @@
-import { Link } from "../Link"
+import { Link } from "../"
 import styles from "./Navbar.module.css"
 
 const links = [

@@ -1,11 +1,10 @@
-import { ServiceItem } from "../ServiceItem/ServiceItem"
-import { Bars } from "react-loader-spinner"
-import { useSnapshot } from "../../../hooks/useSnapshot"
 import { useEffect, useState } from "react"
-import { Paginate } from "../../Paginate"
+import { Bars } from "react-loader-spinner"
+
+import { ServiceItem, Paginate, SearchWidget } from "../../"
+import { useSnapshot } from "../../../hooks"
 
 import styles from "./ServiceItemsList.module.css"
-import { SearchWidget } from "../../SearchWidget"
 
 const matchesText = (obj, query) => {
   if (typeof obj === "string")

@@ -1,5 +1,5 @@
 import { useField } from "formik";
-import { ServiceItem } from "../ServiceItem"
+import { ServiceItem } from "../"
 
 export const ServiceFormPreview = () => {
   const [title] = useField("title")

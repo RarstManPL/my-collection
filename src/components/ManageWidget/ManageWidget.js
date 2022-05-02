@@ -1,6 +1,5 @@
-import { SortWidget } from "../SortWidget/SortWidget"
 import { useLocation } from "react-router-dom"
-import { Link } from "../Link"
+import { Link, SortWidget } from "../"
 
 import styles from "./ManageWidget.module.css"
 

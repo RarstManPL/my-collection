@@ -1,9 +1,9 @@
 import { Form, Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import { Bars } from "react-loader-spinner"
-import { useAuth } from "../../../hooks/useAuth"
-import { Title } from "../../Title"
-import { Button, Input } from "../../Form"
+
+import { Title, Button, Input } from "../../"
+import { useAuth } from "../../../hooks"
 
 import styles from "./Login.module.css"
 

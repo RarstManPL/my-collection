@@ -1,5 +1,5 @@
+import { FormColumn, FormColumns, Input, Select } from "../../"
 import { gameConstants } from "../../../constatns"
-import { FormColumn, FormColumns, Input, Select } from "../../Form"
 
 export const GameFields = () => {
   return (

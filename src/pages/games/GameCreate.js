@@ -1,5 +1,4 @@
-import { GameFields } from "../../components/Pages"
-import { ServiceEditor } from "../../components/Service"
+import { GameFields, ServiceEditor } from "../../components"
 import { gameConstants } from "../../constatns"
 
 export const GameCreate = () => {

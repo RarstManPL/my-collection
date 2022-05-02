@@ -1,6 +1,7 @@
-import { Routes, Route } from "react-router-dom";
-import { Header } from "./components/Header"
+import { Routes, Route } from "react-router-dom"
 import { useLocation } from "react-router-dom"
+
+import { Header } from "./components"
 
 import { Home, Login } from "./pages"
 import { BookCreate, BookDetails, BookEdit, BooksList } from "./pages"
@@ -8,6 +9,13 @@ import { GameCreate, GameDetails, GameEdit, GamesList } from "./pages"
 import { MovieCreate, MovieDetails, MovieEdit, MoviesList } from "./pages"
 
 import "./App.css"
+
+/* 
+  TODO
+  - useMemo
+  - podział na komponenty i moduły
+  - ostylowanie własnych komunikatów
+*/
 
 const colors = {
   books: {

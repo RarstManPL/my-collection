@@ -1,5 +1,5 @@
-import { Login as LoginComponent } from "../../components/Pages";
 import * as Yup from "yup"
+import { Login as LoginComponent } from "../../components"
 
 const formInit = {
   initialValues: {

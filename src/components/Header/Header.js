@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { Navbar } from "../Navbar"
-import { Title } from "../Title"
-import { UserWidget } from "../UserWidget"
+import { Navbar, Title, UserWidget } from "../"
 
 import styles from "./Header.module.css"
 

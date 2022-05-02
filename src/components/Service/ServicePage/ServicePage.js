@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react"
-import { useAuth } from "../../../hooks/useAuth"
-import { ManageWidget } from "../../ManageWidget"
-import { Title } from "../../Title"
 import { where } from "firebase/firestore"
-import { ServiceItemsList } from "../ServiceItemsList"
+
+import { ManageWidget, Title, ServiceItemsList } from "../../"
+import { useAuth } from "../../../hooks"
 
 export const ServicePage = (props) => {
   const { name, sortMethods, addButton } = props

@@ -1,5 +1,4 @@
-import { MovieFields } from "../../components/Pages"
-import { ServiceEditor } from "../../components/Service"
+import { MovieFields, ServiceEditor } from "../../components"
 import { movieConstants } from "../../constatns"
 
 export const MovieCreate = () => {
