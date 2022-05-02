@@ -16,3 +16,16 @@
   justify-self: center;
   margin-top: 24px;
 }
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+
+.search-widget {
+  grid-column: 1 / -1;
+}

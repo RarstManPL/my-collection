@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { Paginate } from "../../Paginate"
 
 import styles from "./ServiceItemsList.module.css"
+import { SearchWidget } from "../../SearchWidget"
 
 const matchesText = (obj, query) => {
   if (typeof obj === "string")
@@ -14,9 +15,11 @@ const matchesText = (obj, query) => {
 }
 
 export const ServiceItemsList = (props) => {
-  const { name, queryOptions = {}, category, query, itemsPerPage = 0 } = props
+  const { name, queryOptions = {}, category, itemsPerPage = 0, withFiltration = true } = props
+
   const [ready, setReady] = useState(false)
   const [documents, setDocuments] = useState(null)
+  const [query, setQuery] = useState(null)
 
   const [documentsLength, setDocumentsLength] = useState(0)
   const [pageCount, setPageCount] = useState(0);
@@ -36,7 +39,7 @@ export const ServiceItemsList = (props) => {
           ? snapshot.documents.filter(document => document.category === category)
           : snapshot.documents)
 
-        const queryFiltred = categoryFiltred && (query
+        const queryFiltred = categoryFiltred && (withFiltration && query
           ? categoryFiltred.filter(document => matchesText(document, query))
           : categoryFiltred)
 
@@ -50,28 +53,38 @@ export const ServiceItemsList = (props) => {
         }
       }
     }
-  }, [snapshot, category, query, itemOffset, itemsPerPage])
+  }, [snapshot, category, query, itemOffset, itemsPerPage, withFiltration])
 
   return (
     <div className={styles["service-items"]}>
       {snapshot.error && <div>{snapshot.error}</div>}
       {ready
-        ? !documents || documents.length < 1
-          ? <div>Brak elementów do załadowania...</div>
-          : (
-            <>
-              {documents.map(item => <ServiceItem serviceItem={item} key={item.id} />)}
+        ? (
+          <>
+            {withFiltration && (
+              <div className={styles["search-widget"]}>
+                <SearchWidget setQuery={setQuery} className={styles.widget} />
+              </div>
+            )}
 
-              {itemsPerPage > 0 && (
-                <div className={styles.pagination}>
-                  <Paginate
-                    onPageChange={handlePageClick}
-                    pageCount={pageCount}
-                  />
-                </div>
-              )}
-            </>
-          )
+            {!documents || documents.length < 1
+              ? <div>Brak elementów do załadowania...</div>
+              : (
+                <>
+                  {documents.map(item => <ServiceItem serviceItem={item} key={item.id} />)}
+
+                  {itemsPerPage > 0 && (
+                    <div className={styles.pagination}>
+                      <Paginate
+                        onPageChange={handlePageClick}
+                        pageCount={pageCount}
+                      />
+                    </div>
+                  )}
+                </>
+              )
+            }
+          </>)
         : <Bars color="#00BFFF" height={80} width={80} />
       }
     </div>

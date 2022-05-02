@@ -15,7 +15,6 @@ export const SearchField = (props) => {
 
   return (
     <Input
-      label="Szukaj"
       name="search"
       type="text"
       placeholder="Wyszukaj"
