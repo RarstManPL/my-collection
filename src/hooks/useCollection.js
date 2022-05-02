@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from "react"
 
 import { firestore } from "@fbase"
-import { collection, addDoc, serverTimestamp, setDoc, doc, getDoc } from "firebase/firestore"
+import { collection, addDoc, serverTimestamp, setDoc, doc, getDoc, deleteDoc } from "firebase/firestore"
 
 const collectionInitialState = {
   document: null,
@@ -18,6 +18,9 @@ const collectionReducer = (state, action) => {
       return { ...state, document: action.payload, ready: true }
 
     case "DOCUMENT_GOT":
+      return { ...state, document: action.payload, ready: true }
+
+    case "DOCUMENT_DELETED":
       return { ...state, document: action.payload, ready: true }
 
     case "RAISE_ERROR":
@@ -66,7 +69,19 @@ export const useCollection = (firestoreCollection) => {
     }
   }
 
-  const deleteDocument = async (data) => { }
+  const deleteDocument = async (id) => { 
+    dispatchNotCancelled({ type: "TO_INITIAL_STATE" })
+
+    try {
+      const docRef = doc(firestore, firestoreCollection, id)
+      const ref = await deleteDoc(docRef)
+
+      dispatchNotCancelled({ type: "DOCUMENT_DELETED", payload: ref })
+    }
+    catch (error) {
+      dispatchNotCancelled({ type: "RAISE_ERROR", payload: error.message })
+    }
+  }
 
   const getDocument = async (id) => {
     dispatchNotCancelled({ type: "TO_INITIAL_STATE" })

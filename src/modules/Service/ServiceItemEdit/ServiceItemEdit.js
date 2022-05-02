@@ -39,6 +39,7 @@ export const ServiceItemEdit = (props) => {
         addButton={editButton}
         formInit={formInit}
         id={id}
+        uid={response.document.uid}
       >
         {children}
       </ServiceEditor>

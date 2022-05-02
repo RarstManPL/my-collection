@@ -1,15 +1,29 @@
 import { useNavigate } from "react-router-dom"
+import { useCollection } from "@hooks"
+
 import styles from "./ServiceItem.module.css"
 
 export const ServiceItem = (props) => {
-  const { serviceItem } = props
+  const { serviceItem, redirect = false } = props
   const navigate = useNavigate()
+  const { deleteDocument } = useCollection(serviceItem.collection)
+
+  const handleDelete = () => {
+    deleteDocument(serviceItem.id)
+
+    if (redirect) 
+      navigate(`/${serviceItem.collection}`)
+  }
 
   return (
     <div
       className={styles["service-item"]}
-      onClick={() => navigate(`/${serviceItem.collection}/${serviceItem.id}`)}
+      
     >
+      <div className="controls">
+        <p onClick={handleDelete}>Usun</p>
+        <p onClick={() => navigate(`/${serviceItem.collection}/edit/${serviceItem.id}`)}>Edytuj</p>
+      </div>
       <div className={styles["image-container"]}>
         <img
           className={styles["item-image"]}

@@ -2,7 +2,7 @@ import { useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, Formik } from "formik"
 
-import { Title } from "@components"
+import { Title, Error } from "@components"
 import { Button, InlineChooser } from "@modules/Form"
 import { ServiceFormPreview } from "../"
 
@@ -11,7 +11,7 @@ import { useCollection, useAuth } from "@hooks"
 import styles from "./ServiceEditor.module.css"
 
 export const ServiceEditor = (props) => {
-  const { collection, addButton, categories, formInit, id, children } = props
+  const { collection, addButton, categories, formInit, id, children, uid = null } = props
   const { addDocument } = useCollection(collection)
   const navigate = useNavigate()
   const { user } = useAuth()
@@ -40,29 +40,34 @@ export const ServiceEditor = (props) => {
         end={collection}
         motd={addButton.text} />
 
-      <Formik {...preparedFormInit} onSubmit={handleSubmit}>
-        <>
-          <div className={styles["form-preview"]}>
-            <ServiceFormPreview />
-          </div>
-
-          <Form className={styles["form-container"]}>
-            <div className={styles["form-inputs"]}>
-              {children}
-
-              <hr className={styles["form-line"]} />
-
-              <InlineChooser name="category" options={filteredCategories} />
-            </div>
-
-            <div className={styles["form-buttons"]}>
-              <Button type="submit" className={styles.add}>
-                {addButton.text}
-              </Button>
-            </div>
-          </Form>
-        </>
-      </Formik>
+      {!user || user.uid !== uid
+        ? <Error>Nie masz dostępu do tego pliku</Error>
+        : (
+            <Formik {...preparedFormInit} onSubmit={handleSubmit}>
+            <>
+              <div className={styles["form-preview"]}>
+                <ServiceFormPreview id={id} collection={collection} redirect={true} />
+              </div>
+    
+              <Form className={styles["form-container"]}>
+                <div className={styles["form-inputs"]}>
+                  {children}
+    
+                  <hr className={styles["form-line"]} />
+    
+                  <InlineChooser name="category" options={filteredCategories} />
+                </div>
+    
+                <div className={styles["form-buttons"]}>
+                  <Button type="submit" className={styles.add}>
+                    {addButton.text}
+                  </Button>
+                </div>
+              </Form>
+            </>
+          </Formik>
+        )
+      }
     </div>
   )
 }
