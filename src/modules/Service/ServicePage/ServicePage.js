@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react"
 import { where } from "firebase/firestore"
 
-import { Title } from "@components"
+import { Title, Error } from "@components"
 import { ManageWidget } from "@modules/Widget"
 import { ServiceItemsList } from "../"
 import { useAuth } from "@hooks"
@@ -50,7 +50,7 @@ export const ServicePage = (props) => {
             itemsPerPage={8}
           />
         </>)
-        : <div>Nie możesz tego zobaczyć... Nie jesteś zalogowany</div>
+        : <Error>Nie możesz tego zobaczyć... Nie jesteś zalogowany</Error>
       }
     </main>
   )

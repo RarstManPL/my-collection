@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Bars } from "react-loader-spinner"
 
-import { Paginate } from "@components"
+import { Paginate, Error } from "@components"
 import { SearchWidget } from "@modules/Widget"
 import { ServiceItem } from "../"
 
@@ -70,7 +70,7 @@ export const ServiceItemsList = (props) => {
             )}
 
             {!documents || documents.length < 1
-              ? <div>Brak elementów do załadowania...</div>
+              ? <Error>Brak elementów do załadowania...</Error>
               : (
                 <>
                   {documents.map(item => <ServiceItem serviceItem={item} key={item.id} />)}

@@ -1,8 +1,9 @@
+import { useState } from "react"
 import { Form, Formik } from "formik"
 import { useNavigate } from "react-router-dom"
 import { Bars } from "react-loader-spinner"
 
-import { Title } from "@components"
+import { Title, Error } from "@components"
 import { Button, Input } from "@modules/Form"
 import { useAuth } from "@hooks"
 
@@ -11,12 +12,16 @@ import styles from "./Login.module.css"
 export const Login = (props) => {
   const { formInit } = props
   const { user, userReady, login } = useAuth()
+  const [error, setError] = useState(null)
   const navigate = useNavigate()
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    await login(values.login, values.password)
+    const response = await login(values.login, values.password)
+    setError(response.error)
     setSubmitting(false)
-    navigate("/")
+
+    if (!response.error)
+      navigate("/")
   }
 
   return (
@@ -28,6 +33,8 @@ export const Login = (props) => {
             end="owanie"
             style={{ width: "100%", textAlign: "center", fontSize: "24px" }}
             startStyle={{ color: "rgb(var(--primary))" }} />
+
+          {error && <Error>{error}</Error>}
 
           {userReady
             ? !user
@@ -53,7 +60,7 @@ export const Login = (props) => {
                   <Button type="submit">Zaloguj się</Button>
                 </div>
               </>)
-              : <div>Jesteś już zalogowany</div>
+              : <Error>Jesteś już zalogowany</Error>
             : <Bars color="#00BFFF" height={80} width={80} />
           }
         </Form>
