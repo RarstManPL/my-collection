@@ -1,5 +1,5 @@
 import { ServicePage } from "../../components"
-import { bookConstants } from "../../constatns"
+import { bookConstants } from "../../constants"
 
 export const BooksList = () => {
   return (

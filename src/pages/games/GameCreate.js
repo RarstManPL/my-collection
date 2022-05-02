@@ -1,5 +1,5 @@
 import { GameFields, ServiceEditor } from "../../components"
-import { gameConstants } from "../../constatns"
+import { gameConstants } from "../../constants"
 
 export const GameCreate = () => {
   return (

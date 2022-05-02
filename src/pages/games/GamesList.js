@@ -1,5 +1,5 @@
 import { ServicePage } from "../../components"
-import { gameConstants } from "../../constatns"
+import { gameConstants } from "../../constants"
 
 export const GamesList = () => {
   return (

@@ -3,7 +3,7 @@ import { useField, useFormikContext } from "formik"
 
 import { Input } from "../../"
 import { useServiceFiller } from "../../../hooks"
-import { regularExpressions } from "../../../constatns"
+import { regularExpressions } from "../../../constants"
 
 export const BookFields = () => {
   const { setFieldValue } = useFormikContext();

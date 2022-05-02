@@ -1,5 +1,5 @@
 import { BookFields, ServiceEditor } from "../../components"
-import { bookConstants } from "../../constatns"
+import { bookConstants } from "../../constants"
 
 export const BookCreate = () => {
   return (
