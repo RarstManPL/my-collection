@@ -20,7 +20,7 @@ export const ServiceItem = (props) => {
 
       <div className={styles["item-caption"]}>
         <p className="author">
-          {serviceItem.author}
+          {serviceItem.author ? serviceItem.author : serviceItem.year}
         </p>
 
         <p className={styles.title}>
