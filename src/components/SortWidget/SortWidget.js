@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "../"
+import { Link } from "../Link"
 
 import styles from "./SortWidget.module.css"
 
