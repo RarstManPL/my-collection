@@ -40,7 +40,7 @@ export const ServiceEditor = (props) => {
         end={collection}
         motd={addButton.text} />
 
-      {!user || user.uid !== uid
+      {!user || (uid && user.uid !== uid)
         ? <Error>Nie masz dostępu do tego pliku</Error>
         : (
             <Formik {...preparedFormInit} onSubmit={handleSubmit}>
