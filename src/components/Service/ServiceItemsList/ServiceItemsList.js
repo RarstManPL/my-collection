@@ -2,7 +2,7 @@ import { ServiceItem } from "../ServiceItem/ServiceItem"
 import { Bars } from "react-loader-spinner"
 import { useSnapshot } from "../../../hooks/useSnapshot"
 import { useEffect, useState } from "react"
-import ReactPaginate from "react-paginate"
+import { Paginate } from "../../Paginate"
 
 import styles from "./ServiceItemsList.module.css"
 
@@ -63,15 +63,12 @@ export const ServiceItemsList = (props) => {
               {documents.map(item => <ServiceItem serviceItem={item} key={item.id} />)}
 
               {itemsPerPage > 0 && (
-                <ReactPaginate
-                  breakLabel="..."
-                  nextLabel=">"
-                  onPageChange={handlePageClick}
-                  pageRangeDisplayed={5}
-                  pageCount={pageCount}
-                  previousLabel="<"
-                  renderOnZeroPageCount={null}
-                />
+                <div className={styles.pagination}>
+                  <Paginate
+                    onPageChange={handlePageClick}
+                    pageCount={pageCount}
+                  />
+                </div>
               )}
             </>
           )

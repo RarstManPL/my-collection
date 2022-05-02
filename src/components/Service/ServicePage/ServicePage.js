@@ -47,7 +47,7 @@ export const ServicePage = (props) => {
             queryOptions={options}
             category={category}
             query={query}
-            itemsPerPage={2}
+            itemsPerPage={8}
           />
         </>)
         : <div>Nie możesz tego zobaczyć... Nie jesteś zalogowany</div>
