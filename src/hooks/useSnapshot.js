@@ -74,13 +74,13 @@ export const useSnapshot = (firestoreCollection, options = {}) => {
 
     const unsubscribe = onSnapshot(queries, { includeMetadataChanges: true }, (snapshot) => {
       dispatch({
-        type: 'UPDATE_DOCUMENTS',
+        type: "UPDATE_DOCUMENTS",
         payload: options.documentId
           ? { ...snapshot.data(), collection: firestoreCollection }
           : (snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id, collection: firestoreCollection })))
       })
     },
-      error => dispatch({ type: 'RAISE_ERROR', payload: error.message }))
+      error => dispatch({ type: "RAISE_ERROR", payload: error.message }))
 
     return unsubscribe
   }, [firestoreCollection, options])

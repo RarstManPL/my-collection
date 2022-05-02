@@ -26,7 +26,7 @@ export const ServiceItemEdit = (props) => {
 
         return { ...current, initialValues: { ...preparedValues } }
       })
-      
+
       setReady(true)
     }
   }, [response])

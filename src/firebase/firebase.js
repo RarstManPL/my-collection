@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app'
+import { initializeApp } from "firebase/app"
 import { initializeFirestore, CACHE_SIZE_UNLIMITED } from "firebase/firestore"
 import { getAuth } from "firebase/auth"
 import { getStorage } from "firebase/storage"
@@ -15,6 +15,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-export const firestore = initializeFirestore(app, { cacheSizeBytes: CACHE_SIZE_UNLIMITED });
+export const firestore = initializeFirestore(app, { cacheSizeBytes: CACHE_SIZE_UNLIMITED })
 export const auth = getAuth(app)
 export const storage = getStorage(app)

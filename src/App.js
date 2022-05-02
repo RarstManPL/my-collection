@@ -48,7 +48,7 @@ export const App = () => {
       <Routes>
         {pages.map(module => {
           const Component = module.component
-          return <Route {...module.routeProps} element={<Component />}/>
+          return <Route {...module.routeProps} element={<Component />} />
         })}
       </Routes>
     </div>

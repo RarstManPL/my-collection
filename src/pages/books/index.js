@@ -7,7 +7,7 @@ const routes = [
   BookCreate,
   BookDetails,
   BookEdit,
-  BooksList,  
+  BooksList,
 ]
 
 export default routes
