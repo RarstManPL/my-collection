@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { Routes, Route } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 
@@ -8,7 +9,6 @@ import "./App.css"
 
 /* 
   TODO
-  - useMemo
   - ostylowanie własnych komunikatów
 */
 
@@ -32,14 +32,16 @@ const colors = {
 export const App = () => {
   const location = useLocation()
 
-  const colorScheme = Object
-    .entries(colors)
-    .find(([key]) => location.pathname.startsWith(`/${key}`))
-    ?.[1]
+  const styles = useMemo(() => {
+    const colorScheme = Object
+      .entries(colors)
+      .find(([key]) => location.pathname.startsWith(`/${key}`))
+      ?.[1]
 
-  const styles = colorScheme
-    ? { "--primary": colorScheme.primary, "--secondary": colorScheme.secondary }
-    : {}
+    return colorScheme
+      ? { "--primary": colorScheme.primary, "--secondary": colorScheme.secondary }
+      : {}
+  }, [location.pathname])
 
   return (
     <div className="App" style={styles}>

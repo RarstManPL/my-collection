@@ -1,3 +1,4 @@
+import { useMemo } from "react"
 import { useNavigate } from "react-router-dom"
 import { Form, Formik } from "formik"
 
@@ -15,16 +16,16 @@ export const ServiceEditor = (props) => {
   const navigate = useNavigate()
   const { user } = useAuth()
 
-  const filteredCategories = categories.filter((category) => category.value)
-  const preparedFormInit = {
+  const filteredCategories = useMemo(() => categories.filter((category) => category.value), [categories])
+  const preparedFormInit = useMemo(() => ({
     ...formInit,
     initialValues: {
       ...formInit.initialValues,
       category: formInit.initialValues.category && formInit.initialValues.category !== ""
         ? formInit.initialValues.category
         : filteredCategories[0].value,
-    },
-  }
+    }
+  }), [formInit, filteredCategories])
 
   const handleSubmit = async (values, { setSubmitting }) => {
     await addDocument({ ...values, uid: user.uid }, id)

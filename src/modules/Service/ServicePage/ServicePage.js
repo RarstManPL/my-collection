@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { where } from "firebase/firestore"
 
 import { Title } from "@components"
 import { ManageWidget } from "@modules/Widget"
 import { ServiceItemsList } from "../"
-
 import { useAuth } from "@hooks"
 
 export const ServicePage = (props) => {
@@ -14,11 +13,13 @@ export const ServicePage = (props) => {
   const [options, setOptions] = useState(null)
   const uid = user ? user.uid : null
 
-  const mappedSortMethods = sortMethods
-    .map(sortMethod => ({
-      ...sortMethod,
-      action: (cat) => setCategory(cat)
-    }))
+  const mappedSortMethods = useMemo(() => (
+    sortMethods
+      .map(sortMethod => ({
+        ...sortMethod,
+        action: (cat) => setCategory(cat)
+      }))
+  ), [sortMethods])
 
   useEffect(() => {
     if (userReady && documentReady) {

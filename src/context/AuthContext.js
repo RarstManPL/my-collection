@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer, useState } from "react"
+import { createContext, useCallback, useEffect, useMemo, useReducer, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { auth, storage } from "@fbase"
@@ -69,7 +69,7 @@ export const AuthContextProvider = ({ children }) => {
     (onAuthStateChanged(auth, (user) => injectUser(user)))()
   }, [])
 
-  const login = async (email, password) => {
+  const login = useCallback(async (email, password) => {
     const answear = {
       user: null,
       error: null,
@@ -85,16 +85,18 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     return answear
-  }
+  }, [])
 
-  const logout = async () => {
+  const logout = useCallback(async () => {
     await signOut(auth)
     injectUser(null)
     navigate("/")
-  }
+  }, [navigate])
+
+  const authValues = useMemo(() => ({ ...state, dispatch, login, logout }), [state, login, logout])
 
   return (
-    <AuthContext.Provider value={{ ...state, dispatch, login, logout }}>
+    <AuthContext.Provider value={authValues}>
       {children}
     </AuthContext.Provider>
   )
