@@ -1,4 +1,6 @@
-import { BookFields, ServiceEditor } from "../../components"
+import { BookFields } from "@modules/Page"
+import { ServiceEditor } from "@modules/Service"
+
 import { bookConstants } from "../../constants"
 
 export const BookCreate = () => {

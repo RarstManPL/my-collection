@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react"
-import { firestore } from "../firebase"
+import { firestore } from "@fbase"
 import { collection, doc, onSnapshot, query } from "firebase/firestore"
 
 const snapshotInitialState = {

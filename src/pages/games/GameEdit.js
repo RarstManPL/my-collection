@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom"
 
-import { ServiceItemEdit, GameFields } from "../../components"
-import { gameConstants } from "../../constants"
+import { GameFields } from "@modules/Page"
+import { ServiceItemEdit } from "@modules/Service"
+
+import { gameConstants } from "@constants"
 
 export const GameEdit = () => {
   const { id } = useParams()

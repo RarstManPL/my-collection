@@ -1,11 +1,11 @@
 import { createContext, useEffect, useReducer, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-import { auth, storage } from "../firebase"
+import { auth, storage } from "@fbase"
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { getDownloadURL, ref } from "firebase/storage"
 
-import { useSnapshot } from "../hooks"
+import { useSnapshot } from "@hooks"
 
 export const AuthContext = createContext()
 

@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useState } from "react"
 
-import { firestore } from "../firebase"
+import { firestore } from "@fbase"
 import { collection, addDoc, serverTimestamp, setDoc, doc, getDoc } from "firebase/firestore"
 
 const collectionInitialState = {

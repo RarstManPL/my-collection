@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 
-import { Header } from "./components"
+import { Header } from "@components"
 
 import { Home, Login } from "./pages"
 import { BookCreate, BookDetails, BookEdit, BooksList } from "./pages"

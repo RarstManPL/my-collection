@@ -1,5 +1,5 @@
-import { ServicePage } from "../../components"
-import { movieConstants } from "../../constants"
+import { ServicePage } from "@modules/Service"
+import { movieConstants } from "@constants"
 
 export const MoviesList = () => {
   return (
