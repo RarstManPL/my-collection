@@ -8,7 +8,8 @@ module.exports = {
       "@modules": path.resolve(__dirname, "src/modules/"),
       "@contexts": path.resolve(__dirname, "src/context/"),
       "@hooks": path.resolve(__dirname, "src/hooks/"),
-      "@fbase": path.resolve(__dirname, "src/firebase/")
+      "@fbase": path.resolve(__dirname, "src/firebase/"),
+      "@pages": path.resolve(__dirname, "src/pages/")
     }
   }
 }

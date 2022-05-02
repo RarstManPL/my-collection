@@ -5,7 +5,7 @@ import { ServiceItemEdit } from "@modules/Service"
 
 import { gameConstants } from "@constants"
 
-export const GameEdit = () => {
+const GameEdit = () => {
   const { id } = useParams()
 
   return (
@@ -18,3 +18,13 @@ export const GameEdit = () => {
     </ServiceItemEdit>
   )
 }
+
+const route = {
+  routeProps: {
+    key: "books",
+    path: "/games/edit/:id",
+  },
+  component: GameEdit,
+}
+
+export default route

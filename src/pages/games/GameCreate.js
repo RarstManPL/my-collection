@@ -3,7 +3,7 @@ import { ServiceEditor } from "@modules/Service"
 
 import { gameConstants } from "@constants"
 
-export const GameCreate = () => {
+const GameCreate = () => {
   return (
     <ServiceEditor
       collection="games"
@@ -15,3 +15,13 @@ export const GameCreate = () => {
     </ServiceEditor>
   )
 }
+
+const route = {
+  routeProps: {
+    key: "createGame",
+    path: "/games/create",
+  },
+  component: GameCreate,
+}
+
+export default route

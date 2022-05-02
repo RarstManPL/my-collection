@@ -1,4 +1,13 @@
-export { BookCreate } from "./BookCreate"
-export { BookDetails } from "./BookDetails"
-export { BookEdit } from "./BookEdit"
-export { BooksList } from "./BooksList"
+import BookCreate from "./BookCreate"
+import BookDetails from "./BookDetails"
+import BookEdit from "./BookEdit"
+import BooksList from "./BooksList"
+
+const routes = [
+  BookCreate,
+  BookDetails,
+  BookEdit,
+  BooksList,  
+]
+
+export default routes

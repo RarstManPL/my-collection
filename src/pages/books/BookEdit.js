@@ -5,7 +5,7 @@ import { ServiceItemEdit } from "@modules/Service"
 
 import { bookConstants } from "@constants"
 
-export const BookEdit = () => {
+const BookEdit = () => {
   const { id } = useParams()
 
   return (
@@ -18,3 +18,13 @@ export const BookEdit = () => {
     </ServiceItemEdit>
   )
 }
+
+const route = {
+  routeProps: {
+    key: "editBook",
+    path: "/books/edit/:id",
+  },
+  component: BookEdit,
+}
+
+export default route

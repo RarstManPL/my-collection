@@ -3,7 +3,7 @@ import { ServiceEditor } from "@modules/Service"
 
 import { movieConstants } from "@constants"
 
-export const MovieCreate = () => {
+const MovieCreate = () => {
   return (
     <ServiceEditor
       collection="movies"
@@ -15,3 +15,13 @@ export const MovieCreate = () => {
     </ServiceEditor>
   )
 }
+
+const route = {
+  routeProps: {
+    key: "movieCreate",
+    path: "/movies/create",
+  },
+  component: MovieCreate,
+}
+
+export default route

@@ -5,7 +5,7 @@ import { ServiceItemEdit } from "@modules/Service"
 
 import { movieConstants } from "@constants"
 
-export const MovieEdit = () => {
+const MovieEdit = () => {
   const { id } = useParams()
 
   return (
@@ -18,3 +18,13 @@ export const MovieEdit = () => {
     </ServiceItemEdit>
   )
 }
+
+const route = {
+  routeProps: {
+    key: "movieEdit",
+    path: "/movies/edit/:id",
+  },
+  component: MovieEdit,
+}
+
+export default route

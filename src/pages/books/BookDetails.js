@@ -7,3 +7,13 @@ export const BookDetails = () => {
     <div>book details {id}</div>
   )
 }
+
+const route = {
+  routeProps: {
+    key: "bookDetails",
+    path: "/books/:id",
+  },
+  component: BookDetails,
+}
+
+export default route

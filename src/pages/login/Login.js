@@ -16,6 +16,16 @@ const formInit = {
   }),
 }
 
-export const Login = () => {
+const Login = () => {
   return <LoginComponent formInit={formInit} />
 }
+
+const route = {
+  routeProps: {
+    key: "login",
+    path: "/login",
+  },
+  component: Login,
+}
+
+export default route

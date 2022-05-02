@@ -1,9 +1,9 @@
 import { BookFields } from "@modules/Page"
 import { ServiceEditor } from "@modules/Service"
 
-import { bookConstants } from "../../constants"
+import { bookConstants } from "@constants"
 
-export const BookCreate = () => {
+const BookCreate = () => {
   return (
     <ServiceEditor
       collection="books"
@@ -15,3 +15,13 @@ export const BookCreate = () => {
     </ServiceEditor>
   )
 }
+
+const route = {
+  routeProps: {
+    key: "createBook",
+    path: "/books/create",
+  },
+  component: BookCreate,
+}
+
+export default route

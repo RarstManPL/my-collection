@@ -1,9 +1,19 @@
 import { useParams } from "react-router-dom"
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { id } = useParams()
 
   return (
     <div>movie details {id}</div>
   )
 }
+
+const route = {
+  routeProps: {
+    key: "movieDetails",
+    path: "/movies/:id",
+  },
+  component: MovieDetails,
+}
+
+export default route

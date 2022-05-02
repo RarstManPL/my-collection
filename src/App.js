@@ -2,18 +2,13 @@ import { Routes, Route } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 
 import { Header } from "@components"
-
-import { Home, Login } from "./pages"
-import { BookCreate, BookDetails, BookEdit, BooksList } from "./pages"
-import { GameCreate, GameDetails, GameEdit, GamesList } from "./pages"
-import { MovieCreate, MovieDetails, MovieEdit, MoviesList } from "./pages"
+import pages from "@pages"
 
 import "./App.css"
 
 /* 
   TODO
   - useMemo
-  - podział na komponenty i moduły
   - ostylowanie własnych komunikatów
 */
 
@@ -51,23 +46,10 @@ export const App = () => {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-
-        <Route path="/books" element={<BooksList />} />
-        <Route path="/books/:id" element={<BookDetails />} />
-        <Route path="/books/create" element={<BookCreate />} />
-        <Route path="/books/edit/:id" element={<BookEdit />} />
-
-        <Route path="/games" element={<GamesList />} />
-        <Route path="/games/:id" element={<GameDetails />} />
-        <Route path="/games/create" element={<GameCreate />} />
-        <Route path="/games/edit/:id" element={<GameEdit />} />
-
-        <Route path="/movies" element={<MoviesList />} />
-        <Route path="/movies/:id" element={<MovieDetails />} />
-        <Route path="/movies/create" element={<MovieCreate />} />
-        <Route path="/movies/edit/:id" element={<MovieEdit />} />
+        {pages.map(module => {
+          const Component = module.component
+          return <Route {...module.routeProps} element={<Component />}/>
+        })}
       </Routes>
     </div>
   )

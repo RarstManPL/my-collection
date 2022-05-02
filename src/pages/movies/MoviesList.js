@@ -1,7 +1,7 @@
 import { ServicePage } from "@modules/Service"
 import { movieConstants } from "@constants"
 
-export const MoviesList = () => {
+const MoviesList = () => {
   return (
     <ServicePage
       name="movies"
@@ -9,3 +9,13 @@ export const MoviesList = () => {
       sortMethods={movieConstants.sortMethods} />
   )
 }
+
+const route = {
+  routeProps: {
+    key: "movies",
+    path: "/movies",
+  },
+  component: MoviesList,
+}
+
+export default route
