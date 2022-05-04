@@ -5,9 +5,10 @@ import { Input } from "@modules/Form"
 import { useServiceFiller } from "@hooks"
 import { regularExpressions } from "@constants"
 
-export const BookFields = () => {
+export const BookFields = (props) => {
   const { setFieldValue } = useFormikContext();
   const [field] = useField("isbn")
+  const { disabled } = props
 
   const fillForm = useCallback((resource) => {
     const book = resource[Object.keys(resource)[0]]
@@ -30,6 +31,7 @@ export const BookFields = () => {
         type="text"
         placeholder="ISBN"
         required={false}
+        disabled={disabled}
       />
 
       <Input
@@ -38,6 +40,7 @@ export const BookFields = () => {
         type="text"
         placeholder="Pomnik Cesarzowej Achai - Tom I"
         required={true}
+        disabled={disabled}
       />
 
       <Input
@@ -46,6 +49,7 @@ export const BookFields = () => {
         type="text"
         placeholder="Andrzej Ziemiański"
         required={true}
+        disabled={disabled}
       />
 
       <Input
@@ -54,6 +58,7 @@ export const BookFields = () => {
         type="text"
         placeholder="https://imgur.com/"
         required={false}
+        disabled={disabled}
       />
     </>
   )

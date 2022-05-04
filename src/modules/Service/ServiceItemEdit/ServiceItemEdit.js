@@ -16,7 +16,10 @@ export const ServiceItemEdit = (props) => {
   }, [id, getDocument])
 
   useEffect(() => {
-    if (response.ready) {
+    if (!response.ready)
+      return () => { }
+
+    if (response.document) {
       setFormInit((current) => {
         let preparedValues = {}
 
@@ -26,9 +29,9 @@ export const ServiceItemEdit = (props) => {
 
         return { ...current, initialValues: { ...preparedValues } }
       })
-
-      setReady(true)
     }
+
+    setReady(true)
   }, [response])
 
   return (
@@ -39,7 +42,7 @@ export const ServiceItemEdit = (props) => {
         addButton={editButton}
         formInit={formInit}
         id={id}
-        uid={response.document.uid}
+        uid={response.document ? response.document.uid : null}
       >
         {children}
       </ServiceEditor>

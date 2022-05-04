@@ -7,14 +7,19 @@ import styles from "./InlineChooser.module.css"
 import formStyles from "../Form.module.css"
 
 export const InlineChooser = (props) => {
-  const { options, name } = props
+  const { options, name, disabled } = props
   const [field, meta] = useField(name)
 
   const handleChange = (value) => field.onChange({ target: { value, name } })
 
   return (
     <div className={formStyles["input-container"]}>
-      <RadioGroup value={field.value} onChange={handleChange} className={styles.chooser}>
+      <RadioGroup 
+        value={field.value} 
+        onChange={handleChange} 
+        className={styles.chooser} 
+        disabled={disabled}
+      >
         {options.map((option) => (
           <RadioGroup.Option
             value={option.value}

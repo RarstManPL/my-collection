@@ -8,7 +8,7 @@ import styles from "./Select.module.css"
 import formStyles from "../Form.module.css"
 
 export const Select = (props) => {
-  const { options, label, name } = props
+  const { options, label, name, disabled } = props
   const [field, meta] = useField(name)
   const [choiceText, setChoiceText] = useState(
     options.find((option) => option.value === field.value)?.text)
@@ -20,7 +20,7 @@ export const Select = (props) => {
 
   return (
     <div className={formStyles["input-container"]}>
-      <Listbox value={field.value} onChange={handleChange}>
+      <Listbox value={field.value} onChange={handleChange} disabled={disabled}>
         <Listbox.Label className={formStyles["field-label"]}>{label}</Listbox.Label><br />
 
         <Listbox.Button className={styles["select-button"]}>{choiceText}</Listbox.Button>

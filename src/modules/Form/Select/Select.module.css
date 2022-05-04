@@ -15,6 +15,9 @@
   position: relative;
   margin-top: 5px;
   width: 100%;
+}
+
+.select-button:not([disabled]) {
   cursor: pointer;
 }
 

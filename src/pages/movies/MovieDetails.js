@@ -1,10 +1,21 @@
 import { useParams } from "react-router-dom"
 
-const MovieDetails = () => {
+import { ServiceItemDetails } from "@modules/Service"
+import { MovieFields } from "@modules/Page"
+
+import { movieConstants } from "@constants"
+
+export const MovieDetails = () => {
   const { id } = useParams()
 
   return (
-    <div>movie details {id}</div>
+    <ServiceItemDetails
+      id={id}
+      collection="movies"
+      constants={movieConstants}
+    >
+      <MovieFields />
+    </ServiceItemDetails>
   )
 }
 

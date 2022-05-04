@@ -1,7 +1,9 @@
 import { FormColumn, FormColumns, Input, Select } from "@modules/Form"
 import { gameConstants } from "@constants"
 
-export const GameFields = () => {
+export const GameFields = (props) => {
+  const { disabled } = props
+
   return (
     <>
       <FormColumns amount={2}>
@@ -12,6 +14,7 @@ export const GameFields = () => {
             type="text"
             placeholder="Dying Light 2"
             required={true}
+            disabled={disabled}
           />
 
           <Input
@@ -20,6 +23,7 @@ export const GameFields = () => {
             type="text"
             placeholder="Techland"
             required={true}
+            disabled={disabled}
           />
 
           <Input
@@ -28,6 +32,7 @@ export const GameFields = () => {
             type="text"
             placeholder="https://imgur.com/"
             required={false}
+            disabled={disabled}
           />
         </FormColumn>
 
@@ -38,12 +43,15 @@ export const GameFields = () => {
             type="text"
             placeholder="myCreedo"
             required={false}
+            disabled={disabled}
           />
 
           <Select
             options={gameConstants.platforms}
             label="Platforma"
-            name="platform" />
+            name="platform"
+            disabled={disabled}
+          />
         </FormColumn>
       </FormColumns>
     </>

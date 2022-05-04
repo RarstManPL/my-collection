@@ -1,10 +1,21 @@
 import { useParams } from "react-router-dom"
 
+import { ServiceItemDetails } from "@modules/Service"
+import { BookFields } from "@modules/Page"
+
+import { bookConstants } from "@constants"
+
 export const BookDetails = () => {
   const { id } = useParams()
 
   return (
-    <div>book details {id}</div>
+    <ServiceItemDetails
+      id={id}
+      collection="books"
+      constants={bookConstants}
+    >
+      <BookFields />
+    </ServiceItemDetails>
   )
 }
 

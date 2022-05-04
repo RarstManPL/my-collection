@@ -6,7 +6,8 @@ import { useServiceFiller } from "@hooks"
 
 const apiKey = process.env.REACT_APP_THEMOVIEDB_KEY
 
-export const MovieFields = () => {
+export const MovieFields = (props) => {
+  const { disabled } = props
   const { setFieldValue } = useFormikContext()
   const [field] = useField("movieid")
 
@@ -30,6 +31,7 @@ export const MovieFields = () => {
         type="text"
         placeholder="ID filmu"
         required={false}
+        disabled={disabled}
       />
 
       <Input
@@ -38,6 +40,7 @@ export const MovieFields = () => {
         type="text"
         placeholder="Straszny film 5"
         required={true}
+        disabled={disabled}
       />
 
       <Input
@@ -46,6 +49,7 @@ export const MovieFields = () => {
         type="text"
         placeholder="2005"
         required={true}
+        disabled={disabled}
       />
 
       <Input
@@ -54,6 +58,7 @@ export const MovieFields = () => {
         type="text"
         placeholder="https://imgur.com/"
         required={false}
+        disabled={disabled}
       />
     </>
   )

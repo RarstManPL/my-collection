@@ -9,7 +9,7 @@ import "./App.css"
 
 /* 
   TODO
-  - ostylowanie własnych komunikatów
+  - default image
 */
 
 const colors = {
