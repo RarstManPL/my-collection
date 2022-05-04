@@ -7,11 +7,6 @@ import pages from "@pages"
 
 import "./App.css"
 
-/* 
-  TODO
-  - default image
-*/
-
 const colors = {
   books: {
     primary: "255, 138, 101",

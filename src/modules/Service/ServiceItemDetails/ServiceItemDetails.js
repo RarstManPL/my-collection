@@ -28,20 +28,18 @@ export const ServiceItemDetails = (props) => {
   }, [snapshot])
 
   return (
-    snapshot.ready && ready
-      ? (
-        <ServiceEditor
-          collection={collection}
-          categories={constants.sortMethods}
-          formInit={formInit}
-          id={id}
-          uid={snapshot.documents.uid}
-          disabled={true}
-          motd={snapshot.documents.title}
-        >
-          {children}
-        </ServiceEditor>
-      )
-      : <p>Ładowanie</p>
+    (snapshot.ready && ready) && (
+      <ServiceEditor
+        collection={collection}
+        categories={constants.sortMethods}
+        formInit={formInit}
+        id={id}
+        uid={snapshot.documents.uid}
+        disabled={true}
+        motd={snapshot.documents.title}
+      >
+        {children}
+      </ServiceEditor>
+    )
   )
 }
