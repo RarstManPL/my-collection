@@ -11,10 +11,10 @@ export const Input = (props) => {
   return (
     <div className={formStyles["input-container"]}>
       <Label htmlFor={props.id || props.name} required={required}>{label}</Label>
-      <input 
-        className={styles["custom-input"]} 
+      <input
+        className={styles["custom-input"]}
         disabled={disabled}
-        {...field} 
+        {...field}
         {...rest} />
       {meta.touched && meta.error && <FormError>{meta.error}</FormError>}
     </div>

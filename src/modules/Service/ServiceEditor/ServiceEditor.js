@@ -44,8 +44,6 @@ export const ServiceEditor = (props) => {
     setSubmitting(false)
   }
 
-  console.log(preparedFormInit)
-
   return (
     <div className="container page">
       <Title

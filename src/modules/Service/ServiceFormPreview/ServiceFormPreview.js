@@ -10,7 +10,7 @@ export const ServiceFormPreview = (props) => {
   const [cover] = useField("cover")
 
   return (
-    <ServiceItem controls={id ? true : false } redirect={redirect} serviceItem={{
+    <ServiceItem controls={id ? true : false} redirect={redirect} serviceItem={{
       title: title.value,
       author: author.value ? author.value : year.value,
       cover: cover.value,

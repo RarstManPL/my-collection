@@ -14,10 +14,10 @@ export const InlineChooser = (props) => {
 
   return (
     <div className={formStyles["input-container"]}>
-      <RadioGroup 
-        value={field.value} 
-        onChange={handleChange} 
-        className={styles.chooser} 
+      <RadioGroup
+        value={field.value}
+        onChange={handleChange}
+        className={styles.chooser}
         disabled={disabled}
       >
         {options.map((option) => (

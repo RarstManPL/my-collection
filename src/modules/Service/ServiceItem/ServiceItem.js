@@ -41,8 +41,8 @@ export const ServiceItem = (props) => {
 
         {controls && (
           <div className={styles.controls}>
-            <FontAwesomeIcon 
-              icon={faPenToSquare} 
+            <FontAwesomeIcon
+              icon={faPenToSquare}
               onClick={() => navigate(`/${serviceItem.collection}/edit/${serviceItem.id}`)}
             />
             <FontAwesomeIcon
@@ -53,7 +53,7 @@ export const ServiceItem = (props) => {
         )}
       </div>
 
-      <div 
+      <div
         className={styles["item-caption"]}
         onClick={handleDetails}
       >

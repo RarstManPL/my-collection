@@ -69,7 +69,7 @@ export const useCollection = (firestoreCollection) => {
     }
   }
 
-  const deleteDocument = async (id) => { 
+  const deleteDocument = async (id) => {
     dispatchNotCancelled({ type: "TO_INITIAL_STATE" })
 
     try {

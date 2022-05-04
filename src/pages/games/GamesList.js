@@ -1,5 +1,5 @@
 import { ServicePage } from "@modules/Service"
-import { gameConstants } from "../../constants"
+import { gameConstants } from "@constants"
 
 const GamesList = () => {
   return (
