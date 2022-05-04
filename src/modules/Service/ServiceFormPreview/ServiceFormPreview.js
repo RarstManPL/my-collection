@@ -1,4 +1,4 @@
-import { useField } from "formik";
+import { useField } from "formik"
 import { ServiceItem } from "../"
 
 export const ServiceFormPreview = (props) => {
