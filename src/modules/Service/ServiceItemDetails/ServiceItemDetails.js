@@ -20,7 +20,7 @@ export const ServiceItemDetails = (props) => {
         ...current.initialValues,
         ...(Object
           .keys(current.initialValues)
-          .reduce((obj2, key) => (obj2[key] = snapshot.documents[key], obj2), {}))
+          .reduce((obj, key) => (obj[key] = snapshot.documents[key], obj), {}))
       },
     }))
 
